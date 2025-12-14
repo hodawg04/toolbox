@@ -1,77 +1,83 @@
 // noinspection JSUnusedGlobalSymbols
 
-class MutationEvent extends Event {
-  constructor(type, mutation, options) {
-    super(type, Object.assign({}, {bubbles: true, cancelable: true}, options));
+class MutationEvent {
+  constructor(type, target, mutation) {
     Object.defineProperty(this, 'attributeName', {value: mutation.attributeName});
     Object.defineProperty(this, 'attributeNamespace', {value: mutation.attributeNamespace});
     Object.defineProperty(this, 'nextSibling', {value: mutation.nextSibling});
     Object.defineProperty(this, 'oldValue', {value: mutation.oldValue});
     Object.defineProperty(this, 'previousSibling', {value: mutation.previousSibling});
     Object.defineProperty(this, 'relatedTarget', {value: mutation.target});
+    Object.defineProperty(this, 'target', {value: target});
     Object.defineProperty(this, 'mutationType', {value: mutation.type});
+    Object.defineProperty(this, 'type', {value: type});
   }
 }
 
-function initShim() {
-  const superAddEventListener = EventTarget.prototype.addEventListener;
-  const superRemoveEventListener = EventTarget.prototype.removeEventListener;
+function initMutationListeners() {
+  function dispatchAddListener(mutation, listener) {
+    const els = [...mutation.addedNodes].filter(n => n instanceof Element);
+    els.forEach(el => listener.call(el, new MutationEvent('element-added', el, mutation)));
+  }
+
+  function dispatchRemoveListener(mutation, listener) {
+    const els = [...mutation.removedNodes].filter(n => n instanceof Element);
+    els.forEach(el => listener.call(el, new MutationEvent('element-removed', el, mutation)));
+  }
+
   const typeSettings = {
     'element-added': {
       config: {childList: true, subtree: true},
-      dispatchEvent: m => {
-        const els = [...m.addedNodes].filter(n => n instanceof Element);
-        els.forEach(el => el.dispatchEvent(new MutationEvent('element-added', m)));
-      },
-      listeners: {'true' : new Map(), 'false' : new Map()}
+      dispatchEvent: dispatchAddListener,
+      listeners: new Map()
     },
     'element-removed': {
       config: {childList: true, subtree: true},
-      dispatchEvent: m => {
-        const els = [...m.removedNodes].filter(n => n instanceof Element);
-        els.forEach(el => el.dispatchEvent(new MutationEvent('element-removed', m)));
-      },
-      listeners: {'true' : new Map(), 'false' : new Map()}
+      dispatchEvent: dispatchRemoveListener,
+      listeners: new Map()
     },
   }
 
-  EventTarget.prototype.addEventListener = function(type, listener, options) {
+  initAddMutationListener(typeSettings);
+  initRemoveMutationListener(typeSettings);
+}
+
+function initAddMutationListener(typeSettings) {
+  if (EventTarget.prototype.addMutationListener) {
+    return;
+  }
+
+  EventTarget.prototype.addMutationListener = function(type, listener, options) {
     const settings = typeSettings[type];
 
     if (settings) {
-      const observer = new MutationObserver(m => m.forEach(settings.dispatchEvent));
+      const observer = new MutationObserver(mutations => {
+        mutations.forEach(m => settings.dispatchEvent(m, listener));
+      });
+
       observer.observe(this, Object.assign({}, settings.config, options));
-      settings.listeners[getCaptureFlag(options)].set(listener, observer);
+      settings.listeners.set(listener, observer);
     }
-
-    superAddEventListener.call(this, type, listener, options);
-  }
-
-  EventTarget.prototype.removeEventListener = function(type, listener, options) {
-    const settings = typeSettings[type];
-
-    if (settings) {
-      const map = settings.listeners[getCaptureFlag(options)];
-      const observer = map.get(listener);
-
-      if (observer) {
-        observer.disconnect();
-        map.delete(listener);
-      }
-    }
-
-    superRemoveEventListener.call(this, type, listener, options);
-  }
-
-  function getCaptureFlag(options) {
-    if (typeof options === 'object' && typeof options.capture === 'boolean') {
-      return options.capture;
-    }
-    if (typeof options === 'boolean') {
-      return options;
-    }
-    return false;
   }
 }
 
-export { initShim };
+function initRemoveMutationListener(typeSettings) {
+  if (EventTarget.prototype.removeMutationListener) {
+    return;
+  }
+
+  EventTarget.prototype.removeMutationListener = function(type, listener) {
+    const settings = typeSettings[type];
+
+    if (settings) {
+      const observer = settings.listeners.get(listener);
+
+      if (observer) {
+        observer.disconnect();
+        settings.listeners.delete(listener);
+      }
+    }
+  }
+}
+
+export { initMutationListeners };
