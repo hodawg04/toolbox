@@ -250,13 +250,13 @@ class Spinner {
     const observer = new MutationObserver(onRemove);
     observer.observe(parent, {subtree: true, childList: true});
 
-    function onRemove(records, observer) {
+    function onRemove(records) {
       const nodes = [...records].flatMap(r => [...r.removedNodes]);
       const els = nodes.filter(n => n instanceof Element);
 
       for (const el of els) {
         parent.remove();
-        observer.destroy();
+        observer.disconnect();
       }
     }
   }
