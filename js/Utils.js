@@ -1,28 +1,29 @@
 // noinspection JSUnusedGlobalSymbols
 
-import { Modal } from "bootstrap";
+import { Modal } from "https://cdn.jsdelivr.net/npm/bootstrap@5.3/+esm";
 
 function getContext() {
   return window.location.pathname.substring(0, window.location.pathname.indexOf('/', 1));
 }
 
-let isInitModalAutofocusInitialized = false;
-
 function initModalAutofocus() {
-  if (!isInitModalAutofocusInitialized) {
-    document.addEventListener('shown.bs.modal', function(e) {
-      const els = e.target.querySelectorAll('[autofocus]');
-      [...els].filter(el => el.checkVisibility())?.[0]?.focus();
-    });
-    isInitModalAutofocusInitialized = true;
+  document.removeEventListener('shown.bs.modal', listener);
+  document.addEventListener('shown.bs.modal', listener);
+
+  function listener(e) {
+    const els = e.target.querySelectorAll('[autofocus]');
+    [...els].filter(el => el.checkVisibility())?.[0]?.focus();
   }
 }
 
 function initCollapseAutoFocus() {
-  document.addEventListener('shown.bs.collapse', function(e) {
+  document.removeEventListener('shown.bs.collapse', listener);
+  document.addEventListener('shown.bs.collapse', listener);
+
+  function listener(e) {
     const inputs = e.target.querySelectorAll('[name]:not(.no-focus)');
     [...inputs].filter(e => e.checkVisibility())?.[0]?.focus();
-  });
+  }
 }
 
 function initModalShowOnError() {
@@ -30,15 +31,24 @@ function initModalShowOnError() {
     const invalidEl = modalEl.querySelector('.is-invalid, .alert.alert-danger');
 
     if (invalidEl && modalEl.parentElement.checkVisibility()) {
-      modalEl.addEventListener('shown.bs.modal', scrollToInvalidEl);
       Modal.getOrCreateInstance(modalEl).show();
-    }
-
-    function scrollToInvalidEl() {
-      invalidEl.scrollIntoView({behavior: 'smooth', block: 'center'});
-      modalEl.removeEventListener('shown.bs.modal', scrollToInvalidEl);
+      setTimeout(() => invalidEl.scrollIntoView({behavior: 'smooth', block: 'center'}), 355);
     }
   }
 }
 
-export { getContext, initModalAutofocus, initCollapseAutoFocus, initModalShowOnError };
+function dirtyCheck() {
+  document.addEventListener('change', () => {
+    window.removeEventListener('beforeunload', preventNav);
+    window.addEventListener('beforeunload', preventNav);
+  });
+  document.addEventListener('submit', () => window.removeEventListener('beforeunload', preventNav));
+
+  function preventNav(e) {
+    e.preventDefault();
+    e.returnValue = 'Any changes made will be lost. Are you sure?';
+    return 'Any changes made will be lost. Are you sure?';
+  }
+}
+
+export { getContext, initModalAutofocus, initCollapseAutoFocus, initModalShowOnError, dirtyCheck };
