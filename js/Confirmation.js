@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
-import { Modal } from "bootstrap";
+import { Modal } from "https://cdn.jsdelivr.net/npm/bootstrap@5.3/+esm";
 
 class Confirmation {
   static #defaultSelector = '[data-isp-toggle="confirmation"]'

@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
-import { Collapse } from 'https://cdn.jsdelivr.net/npm/bootstrap@5.3/+esm';
+import { Collapse } from "https://cdn.jsdelivr.net/npm/bootstrap@5.3/+esm";
 
 /**
  * When radio is checked, perform action on target collapse.

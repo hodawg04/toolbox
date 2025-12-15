@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
-import { Toast } from "bootstrap";
+import { Toast } from "https://cdn.jsdelivr.net/npm/bootstrap@5.3/+esm";
 
 class CopyText {
   static #defaultSelector = '[data-isp-toggle="copy-text"]'
