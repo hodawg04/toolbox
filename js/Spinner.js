@@ -247,7 +247,10 @@ class Spinner {
     }
 
     const parent = this.svgEl.parentElement;
-    const observer = new MutationObserver(records => {
+    const observer = new MutationObserver(onRemove);
+    observer.observe(parent, {subtree: true, childList: true});
+
+    function onRemove(records, observer) {
       const nodes = [...records].flatMap(r => [...r.removedNodes]);
       const els = nodes.filter(n => n instanceof Element);
 
@@ -255,11 +258,7 @@ class Spinner {
         parent.remove();
         observer.destroy();
       }
-    });
-    
-    observer.observe(parent, {subtree: true, childList: true});
-
-
+    }
   }
 
   destroy() {
