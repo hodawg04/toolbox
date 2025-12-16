@@ -75,6 +75,11 @@ class Confirmation {
       }
 
       e.preventDefault();
+
+      if (Confirmation.#isAnchorOrBtn(this.el) || Confirmation.#isForm(this.el)) {
+        e.stopImmediatePropagation();
+      }
+
       this.#showConfirmation();
     }
 
@@ -138,24 +143,16 @@ class Confirmation {
     if (yesCallback) {
       Confirmation.#executeCallback(el, modal, yesCallback);
     }
-    else if (el instanceof HTMLAnchorElement) {
-      el.click();
-      modal.hide();
-    }
-    else if (el instanceof HTMLFormElement) {
-      el.requestSubmit();
-      modal.hide();
-    }
-    else if ((el instanceof HTMLButtonElement || el instanceof HTMLInputElement) && el.type === 'submit') {
-      if (el.form) {
-        el.form.requestSubmit(el);
-      }
-      else {
-        el.closest('form').requestSubmit(el);
-      }
-      modal.hide();
-    }
     else {
+      if (Confirmation.#isAnchorOrBtn(el)) {
+        el.click();
+      }
+      if (Confirmation.#isForm(el)) {
+        el.requestSubmit();
+      }
+      if (Confirmation.#isSubmitBtnOrInput(el)) {
+        (el.form || el.closest('form')).requestSubmit(el);
+      }
       modal.hide();
     }
 
@@ -184,6 +181,18 @@ class Confirmation {
     else {
       throw new Error('Callback function ' + callback + ' is not valid.');
     }
+  }
+
+  static #isAnchorOrBtn(el) {
+    return el instanceof HTMLAnchorElement || (el instanceof HTMLButtonElement && el.type === 'button');
+  }
+
+  static #isForm(el) {
+    return el instanceof HTMLFormElement;
+  }
+
+  static #isSubmitBtnOrInput(el) {
+    return (el instanceof HTMLButtonElement || el instanceof HTMLInputElement) && el.type === 'submit';
   }
 }
 

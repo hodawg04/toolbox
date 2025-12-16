@@ -2,6 +2,8 @@
 
 import { Collapse } from "https://cdn.jsdelivr.net/npm/bootstrap@5.3/+esm";
 
+const context = new Map();
+
 /**
  * When radio is checked, perform action on target collapse.
  *
@@ -10,8 +12,12 @@ import { Collapse } from "https://cdn.jsdelivr.net/npm/bootstrap@5.3/+esm";
  * @property {'show' | 'hide'} [data-action] (required) The action taken when the radio is checked.
  */
 function initRadioCollapse(selector = '[data-isp-toggle="radio-collapse"]') {
-  document.removeEventListener('input', listener);
-  document.addEventListener('input', listener);
+  if (!context.has('radioCollapseListener')) {
+    context.set('radioCollapseListener', listener);
+  }
+
+  document.removeEventListener('input', context.get('radioCollapseListener'));
+  document.addEventListener('input', context.get('radioCollapseListener'));
 
   function listener(e) {
     const labelEl = e.target.closest(selector);
@@ -34,8 +40,12 @@ function initRadioCollapse(selector = '[data-isp-toggle="radio-collapse"]') {
  * @property {'show' | 'hide'} [data-action] (required) The action taken when the checkbox is checked.
  */
 function initCheckboxCollapse(selector = '[data-isp-toggle="checkbox-collapse"]') {
-  document.removeEventListener('input', listener);
-  document.addEventListener('input', listener);
+  if (!context.has('checkboxCollapseListener')) {
+    context.set('checkboxCollapseListener', listener);
+  }
+
+  document.removeEventListener('input', context.get('checkboxCollapseListener'));
+  document.addEventListener('input', context.get('checkboxCollapseListener'));
 
   function listener(e) {
     const labelEl = e.target.closest(selector);
@@ -94,8 +104,12 @@ function initCheckboxCollapse(selector = '[data-isp-toggle="checkbox-collapse"]'
  * @property {'show' | 'hide'} [data-action] (required) The action taken when a selection is made.
  */
 function initSelectCollapse(selector = '[data-isp-toggle="select-collapse"]') {
-  document.removeEventListener('input', listener);
-  document.addEventListener('input', listener);
+  if (!context.has('selectCollapseListener')) {
+    context.set('selectCollapseListener', listener);
+  }
+
+  document.removeEventListener('input', context.get('selectCollapseListener'));
+  document.addEventListener('input', context.get('selectCollapseListener'));
 
   function listener(e) {
     const selectEl = e.target.closest(selector);
