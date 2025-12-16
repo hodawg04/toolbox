@@ -9,12 +9,12 @@ import { Collapse } from "https://cdn.jsdelivr.net/npm/bootstrap@5.3/+esm";
  * @property {selector} [data-target] (required) The selector used in a .querySelectorAll to find the collapses.
  * @property {'show' | 'hide'} [data-action] (required) The action taken when the radio is checked.
  */
-function initRadioCollapse() {
+function initRadioCollapse(selector = '[data-isp-toggle="radio-collapse"]') {
   document.removeEventListener('input', listener);
   document.addEventListener('input', listener);
 
   function listener(e) {
-    const labelEl = e.target.closest('[data-isp-toggle="radio-collapse"]');
+    const labelEl = e.target.closest(selector);
     if (labelEl) {
       const collapseEls = document.querySelectorAll(labelEl.dataset.target);
       const collapses = [...collapseEls].map(el => Collapse.getOrCreateInstance(el, {toggle: false}));
@@ -33,12 +33,12 @@ function initRadioCollapse() {
  * @property {selector} [data-target] (required) The selector used in a .querySelectorAll to find the collapses.
  * @property {'show' | 'hide'} [data-action] (required) The action taken when the checkbox is checked.
  */
-function initCheckboxCollapse() {
+function initCheckboxCollapse(selector = '[data-isp-toggle="checkbox-collapse"]') {
   document.removeEventListener('input', listener);
   document.addEventListener('input', listener);
 
   function listener(e) {
-    const labelEl = e.target.closest('[data-isp-toggle="checkbox-collapse"]');
+    const labelEl = e.target.closest(selector);
     if (labelEl) {
       const checked = areAnyCheckedForThisTarget(labelEl);
       const collapseEls = document.querySelectorAll(labelEl.dataset.target);
@@ -55,7 +55,7 @@ function initCheckboxCollapse() {
 
   //find all the other checkboxes that are targeting the same collapse and check if any of them are checked.
   function areAnyCheckedForThisTarget(labelEl) {
-    const groupSelector = '[data-app-toggle="checkbox-collapse"][data-target="' + labelEl.dataset.target + '"]';
+    const groupSelector = selector + '[data-target="' + labelEl.dataset.target + '"]';
     const labelGroup = [...document.querySelectorAll(groupSelector)];
     const checkboxGroup = labelGroup.flatMap(el => el.querySelector('[type="checkbox"]'));
     return checkboxGroup.filter(el => el.checked).length > 0;
@@ -93,24 +93,35 @@ function initCheckboxCollapse() {
  * @property {selector} [data-target] (required) The selector used in a .querySelectorAll to find the collapses.
  * @property {'show' | 'hide'} [data-action] (required) The action taken when a selection is made.
  */
-function initSelectCollapse() {
+function initSelectCollapse(selector = '[data-isp-toggle="select-collapse"]') {
   document.removeEventListener('input', listener);
   document.addEventListener('input', listener);
 
   function listener(e) {
-    const selectEl = e.target.closest('[data-isp-toggle="select-collapse"]');
+    const selectEl = e.target.closest(selector);
     if (selectEl) {
-      if (!selectEl.dataset.target) {
-        applyActionToSelectedTarget(selectEl);
-      }
       if (!selectEl.dataset.action) {
         applySelectedActionToTarget(selectEl);
+      }
+      if (!selectEl.dataset.target) {
+        applyActionToSelectedTarget(selectEl);
       }
     }
   }
 
+  function applySelectedActionToTarget(selectEl) {
+    const action = selectEl.options[selectEl.selectedIndex].dataset.action;
+
+    if (action) {
+      const collapseEls = document.querySelectorAll(selectEl.dataset.target);
+      const collapses = [...collapseEls].map(el => Collapse.getOrCreateInstance(el, {toggle: false}));
+      collapses.forEach(collapse => collapse[action === 'show' ? 'show' : 'hide']());
+    }
+  }
+
   function applyActionToSelectedTarget(selectEl) {
-    const selectedOption = [...selectEl.children].filter(el => el.selected)[0];
+    const selectedIndex = selectEl.selectedIndex;
+    const selectedOption = selectEl.options[selectedIndex];
     const selectedTarget = selectedOption.dataset.target;
     const action = selectEl.dataset.action;
 
@@ -130,13 +141,6 @@ function initSelectCollapse() {
         collapses.forEach(collapse => collapse[action === 'show' ? 'hide' : 'show']());
       }
     }
-  }
-
-  function applySelectedActionToTarget(selectEl) {
-    const action = selectEl.options[selectEl.selectedIndex].dataset.action;
-    const collapseEls = document.querySelectorAll(selectEl.dataset.target);
-    const collapses = [...collapseEls].map(el => Collapse.getOrCreateInstance(el, {toggle: false}));
-    collapses.forEach(collapse => collapse[action === 'show' ? 'show' : 'hide']());
   }
 }
 

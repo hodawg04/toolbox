@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Utils Test</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container-fluid p-3">
+  <div class="row g-3">
+    <div class="col-6">
+      <div class="card">
+        <h6 class="card-header">Hidden collapse controlled by multiple radio inputs.</h6>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-7 py-2">
+              <div class="form-check" data-isp-toggle="radio-collapse" data-target="#radioCollapse1" data-action="show">
+                <input id="radioCollapse1Trigger1" class="form-check-input" type="radio" name="radioCollapse1">
+                <label for="radioCollapse1Trigger1" class="form-check-label">Show the collapse</label>
+                <span id="radioCollapse1Result1" class="text-warning">Running</span>
+              </div>
+              <div class="form-check" data-isp-toggle="radio-collapse" data-target="#radioCollapse1" data-action="hide">
+                <input id="radioCollapse1Trigger2" class="form-check-input" type="radio" name="radioCollapse1">
+                <label for="radioCollapse1Trigger2" class="form-check-label">Hide the collapse</label>
+                <span id="radioCollapse1Result2" class="text-warning">Running</span>
+              </div>
+            </div>
+            <div class="col-5">
+              <div id="radioCollapse1" class="collapse flex-fill">
+                <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card">
+        <h6 class="card-header">Shown collapse controlled by multiple radio inputs.</h6>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-7 py-2">
+              <div class="form-check" data-isp-toggle="radio-collapse" data-target="#radioCollapse2" data-action="hide">
+                <input id="radioCollapse2Trigger1" class="form-check-input" type="radio" name="radioCollapse2">
+                <label for="radioCollapse2Trigger1" class="form-check-label">Show the collapse</label>
+                <span id="radioCollapse2Result1" class="text-warning">Running</span>
+              </div>
+              <div class="form-check" data-isp-toggle="radio-collapse" data-target="#radioCollapse2" data-action="show">
+                <input id="radioCollapse2Trigger2" class="form-check-input" type="radio" name="radioCollapse2">
+                <label for="radioCollapse2Trigger2" class="form-check-label">Hide the collapse</label>
+                <span id="radioCollapse2Result2" class="text-warning">Running</span>
+              </div>
+            </div>
+            <div class="col-5">
+              <div id="radioCollapse2" class="collapse show flex-fill">
+                <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card">
+        <h6 class="card-header">Hidden collapse controlled by a checkbox input.</h6>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-7">
+              <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#checkboxCollapse1" data-action="show">
+                <input id="checkboxCollapse1Trigger1" class="form-check-input" type="checkbox">
+                <label for="checkboxCollapse1Trigger1" class="form-check-label">checkbox</label>
+              </div>
+              <div>Show on checked test: <span id="checkboxCollapse1Result1" class="text-warning">Running</span></div>
+              <div>Hide on un-checked test: <span id="checkboxCollapse1Result2" class="text-warning">Running</span></div>
+            </div>
+            <div class="col-5">
+              <div id="checkboxCollapse1" class="collapse">
+                <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card">
+        <h6 class="card-header">Shown collapse controlled by a checkbox input.</h6>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-7">
+              <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#checkboxCollapse2" data-action="hide">
+                <input id="checkboxCollapse2Trigger1" class="form-check-input" type="checkbox">
+                <label for="checkboxCollapse2Trigger1" class="form-check-label">checkbox</label>
+              </div>
+              <div>Hide on checked test: <span id="checkboxCollapse2Result1" class="text-warning">Running</span></div>
+              <div>Show on un-checked test: <span id="checkboxCollapse2Result2" class="text-warning">Running</span></div>
+            </div>
+            <div class="col-5">
+              <div id="checkboxCollapse2" class="collapse show">
+                <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-xxl-6">
+      <div class="card">
+        <h6 class="card-header">Hidden collapse controlled by multiple checkbox inputs.</h6>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-6 py-2">
+              <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#checkboxCollapse3" data-action="show">
+                <input id="checkboxCollapse3Trigger1" class="form-check-input" type="checkbox">
+                <label for="checkboxCollapse3Trigger1" class="form-check-label">1<sup>st</sup> checkbox</label>
+              </div>
+              <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#checkboxCollapse3" data-action="show">
+                <input id="checkboxCollapse3Trigger2" class="form-check-input" type="checkbox">
+                <label for="checkboxCollapse3Trigger2" class="form-check-label">2<sup>nd</sup> checkbox</label>
+              </div>
+            </div>
+            <div class="col-6">
+              <div id="checkboxCollapse3" class="collapse">
+                <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div>Show on 1<sup>st</sup> checked test: <span id="checkboxCollapse3Result1" class="text-warning">Running</span></div>
+              <div>Stay shown on 2<sup>nd</sup> checked test: <span id="checkboxCollapse3Result2" class="text-warning">Running</span></div>
+              <div>Stay shown on 2<sup>nd</sup> un-checked test: <span id="checkboxCollapse3Result3" class="text-warning">Running</span></div>
+              <div>Hide on 1<sup>st</sup> un-checked test: <span id="checkboxCollapse3Result4" class="text-warning">Running</span></div>
+            </div>
+            <div class="col-6">
+              <div>Show on 2<sup>nd</sup> checked test: <span id="checkboxCollapse3Result5" class="text-warning">Running</span></div>
+              <div>Stay shown on 1<sup>st</sup> checked test: <span id="checkboxCollapse3Result6" class="text-warning">Running</span></div>
+              <div>Stay shown on 1<sup>st</sup> un-checked test: <span id="checkboxCollapse3Result7" class="text-warning">Running</span></div>
+              <div>Hide on 2<sup>nd</sup> un-checked test: <span id="checkboxCollapse3Result8" class="text-warning">Running</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-xxl-6">
+      <div class="card">
+        <h6 class="card-header">Shown collapse controlled by multiple checkbox inputs.</h6>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-6 py-2">
+              <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#checkboxCollapse4" data-action="hide">
+                <input id="checkboxCollapse4Trigger1" class="form-check-input" type="checkbox">
+                <label for="checkboxCollapse4Trigger1" class="form-check-label">1<sup>st</sup> checkbox</label>
+              </div>
+              <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#checkboxCollapse4" data-action="hide">
+                <input id="checkboxCollapse4Trigger2" class="form-check-input" type="checkbox">
+                <label for="checkboxCollapse4Trigger2" class="form-check-label">2<sup>nd</sup> checkbox</label>
+              </div>
+            </div>
+            <div class="col-6">
+              <div id="checkboxCollapse4" class="collapse show">
+                <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div>Hide on 1<sup>st</sup> checked test: <span id="checkboxCollapse4Result1" class="text-warning">Running</span></div>
+              <div>Stay hidden on 2<sup>nd</sup> checked test: <span id="checkboxCollapse4Result2" class="text-warning">Running</span></div>
+              <div>Stay hidden on 2<sup>nd</sup> un-checked test: <span id="checkboxCollapse4Result3" class="text-warning">Running</span></div>
+              <div>Show on 1<sup>st</sup> un-checked test: <span id="checkboxCollapse4Result4" class="text-warning">Running</span></div>
+            </div>
+            <div class="col-6">
+              <div>Hide on 2<sup>nd</sup> checked test: <span id="checkboxCollapse4Result5" class="text-warning">Running</span></div>
+              <div>Stay hidden on 1<sup>st</sup> checked test: <span id="checkboxCollapse4Result6" class="text-warning">Running</span></div>
+              <div>Stay hidden on 1<sup>st</sup> un-checked test: <span id="checkboxCollapse4Result7" class="text-warning">Running</span></div>
+              <div>Show on 2<sup>nd</sup> un-checked test: <span id="checkboxCollapse4Result8" class="text-warning">Running</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card">
+        <h6 class="card-header">A hidden collapse controlled by a select input.</h6>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-6 py-3">
+              <select id="selectCollapse1Trigger1" class="form-select" data-isp-toggle="select-collapse" data-target="#selectCollapse1">
+                <option data-action="hide"></option>
+                <option value="Show" data-action="show">Show</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <div id="selectCollapse1" class="collapse">
+                <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div>Show on show value selected test: <span id="selectCollapse1Result1" class="text-warning">Running</span></div>
+              <div>Hide on hide value selected test: <span id="selectCollapse1Result2" class="text-warning">Running</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card">
+        <h6 class="card-header">A shown collapse controlled by select input.</h6>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-6 py-3">
+              <select id="selectCollapse2Trigger1" class="form-select" data-isp-toggle="select-collapse" data-target="#selectCollapse2">
+                <option data-action="show"></option>
+                <option value="Hide" data-action="hide">Hide</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <div id="selectCollapse2" class="collapse show">
+                <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div>Hide on hide value selected test: <span id="selectCollapse2Result1" class="text-warning">Running</span></div>
+              <div>Show on show value selected test: <span id="selectCollapse2Result2" class="text-warning">Running</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card">
+        <h6 class="card-header">Multiple hidden collapse controlled by a select input.</h6>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-4 py-3">
+              <select id="selectCollapse34Trigger1" class="form-select" data-isp-toggle="select-collapse" data-action="show">
+                <option></option>
+                <option value="1st" data-target="#selectCollapse3">Show 1st</option>
+                <option value="2nd" data-target="#selectCollapse4">Show 2nd</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <div id="selectCollapse3" class="collapse">
+                <div class="p-1 text-center fs-1 border rounded">1<sup>st</sup>!!!</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div id="selectCollapse4" class="collapse">
+                <div class="p-1 text-center fs-1 border rounded">2<sup>nd</sup>!!!</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div>Show 1<sup>st</sup> on 1<sup>st</sup> value selected test: <span id="selectCollapse34Result1" class="text-warning">Running</span></div>
+              <div>Show 2<sup>nd</sup> on 2<sup>nd</sup> value selected test: <span id="selectCollapse34Result2" class="text-warning">Running</span></div>
+              <div>Hide all on blank value selected test: <span id="selectCollapse34Result3" class="text-warning">Running</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card">
+        <h6 class="card-header">Multiple hidden collapse controlled by a select input.</h6>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-4 py-3">
+              <select id="selectCollapse56Trigger1" class="form-select" data-isp-toggle="select-collapse" data-action="hide">
+                <option></option>
+                <option value="1st" data-target="#selectCollapse5">Show 1st</option>
+                <option value="2nd" data-target="#selectCollapse6">Show 2nd</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <div id="selectCollapse5" class="collapse show">
+                <div class="p-1 text-center fs-1 border rounded">1<sup>st</sup>!!!</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div id="selectCollapse6" class="collapse show">
+                <div class="p-1 text-center fs-1 border rounded">2<sup>nd</sup>!!!</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div>Hide 1<sup>st</sup> on 1<sup>st</sup> value selected test: <span id="selectCollapse56Result1" class="text-warning">Running</span></div>
+              <div>Hide 2<sup>nd</sup> on 2<sup>nd</sup> value selected test: <span id="selectCollapse56Result2" class="text-warning">Running</span></div>
+              <div>Show all on blank value selected test: <span id="selectCollapse56Result3" class="text-warning">Running</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3/+esm"></script>
+<script type="module">
+  import { initRadioCollapse, initCheckboxCollapse, initSelectCollapse } from "../js/CollapseUtils.js";
+
+  (async function initCollapseUtilsTest() {
+    initRadioCollapse();
+    initCheckboxCollapse();
+    initSelectCollapse();
+
+    const tests = [
+      testRadioCollapse1Shows,
+      testRadioCollapse1Hides,
+
+      testRadioCollapse2Shows,
+      testRadioCollapse2Hides,
+
+      testCheckboxCollapse1CheckedShows,
+      testCheckboxCollapse1UnCheckedHides,
+
+      testCheckboxCollapse2CheckedHides,
+      testCheckboxCollapse2UnCheckedShows,
+
+      testCheckboxCollapse3Checkbox1CheckedShows,
+      testCheckboxCollapse3Checkbox2CheckedNothing,
+      testCheckboxCollapse3Checkbox2UnCheckedNothing,
+      testCheckboxCollapse3Checkbox1UnCheckedHides,
+      testCheckboxCollapse3Checkbox2CheckedShows,
+      testCheckboxCollapse3Checkbox1CheckedNothing,
+      testCheckboxCollapse3Checkbox1UnCheckedNothing,
+      testCheckboxCollapse3Checkbox2UnCheckedHides,
+
+      testCheckboxCollapse4Checkbox1CheckedHides,
+      testCheckboxCollapse4Checkbox2CheckedNothing,
+      testCheckboxCollapse4Checkbox2UnCheckedNothing,
+      testCheckboxCollapse4Checkbox1UnCheckedShows,
+      testCheckboxCollapse4Checkbox2CheckedHides,
+      testCheckboxCollapse4Checkbox1CheckedNothing,
+      testCheckboxCollapse4Checkbox1UnCheckedNothing,
+      testCheckboxCollapse4Checkbox2UnCheckedShows,
+
+      testSelectCollapse1Shows,
+      testSelectCollapse1Hides,
+
+      testSelectCollapse2Shows,
+      testSelectCollapse2Hides,
+
+      testSelectCollapse3Shows,
+      testSelectCollapse4Shows,
+      testSelectCollapse34Hides,
+
+      testSelectCollapse5Hides,
+      testSelectCollapse6Hides,
+      testSelectCollapse56Shows
+    ];
+
+    for (const test of tests) {
+      try {
+        const result = await new Promise(test);
+        showSuccess(result);
+      }
+      catch (err) {
+        showFailure(err);
+      }
+    }
+  })();
+
+  function testRadioCollapse1Shows(resolve, reject) {
+    const collapseEl = document.querySelector('#radioCollapse1');
+    const triggerEl = document.querySelector('#radioCollapse1Trigger1');
+    const resultEl = document.querySelector('#radioCollapse1Result1');
+
+    let success = false;
+    collapseEl.addEventListener('shown.bs.collapse', () => success = true);
+    simulateInput(triggerEl, true);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testRadioCollapse1Hides(resolve, reject) {
+    const collapseEl = document.querySelector('#radioCollapse1');
+    const triggerEl = document.querySelector('#radioCollapse1Trigger2');
+    const resultEl = document.querySelector('#radioCollapse1Result2');
+
+    let success = false;
+    collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
+    simulateInput(triggerEl, true);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testRadioCollapse2Shows(resolve, reject) {
+    const collapseEl = document.querySelector('#radioCollapse2');
+    const triggerEl = document.querySelector('#radioCollapse2Trigger1');
+    const resultEl = document.querySelector('#radioCollapse2Result1');
+
+    let success = false;
+    collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
+    simulateInput(triggerEl, true);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testRadioCollapse2Hides(resolve, reject) {
+    const collapseEl = document.querySelector('#radioCollapse2');
+    const triggerEl = document.querySelector('#radioCollapse2Trigger2');
+    const resultEl = document.querySelector('#radioCollapse2Result2');
+
+    let success = false;
+    collapseEl.addEventListener('shown.bs.collapse', () => success = true);
+    simulateInput(triggerEl, true);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse1CheckedShows(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse1');
+    const triggerEl = document.querySelector('#checkboxCollapse1Trigger1');
+    const resultEl = document.querySelector('#checkboxCollapse1Result1');
+
+    let success = false;
+    collapseEl.addEventListener('shown.bs.collapse', () => success = true);
+    simulateInput(triggerEl, true);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse1UnCheckedHides(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse1');
+    const triggerEl = document.querySelector('#checkboxCollapse1Trigger1');
+    const resultEl = document.querySelector('#checkboxCollapse1Result2');
+
+    let success = false;
+    collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
+    simulateInput(triggerEl, false);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse2CheckedHides(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse2');
+    const triggerEl = document.querySelector('#checkboxCollapse2Trigger1');
+    const resultEl = document.querySelector('#checkboxCollapse2Result1');
+
+    let success = false;
+    collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
+    simulateInput(triggerEl, true);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse2UnCheckedShows(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse2');
+    const triggerEl = document.querySelector('#checkboxCollapse2Trigger1');
+    const resultEl = document.querySelector('#checkboxCollapse2Result2');
+
+    let success = false;
+    collapseEl.addEventListener('shown.bs.collapse', () => success = true);
+    simulateInput(triggerEl, false);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse3Checkbox1CheckedShows(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse3');
+    const triggerEl = document.querySelector('#checkboxCollapse3Trigger1');
+    const resultEl = document.querySelector('#checkboxCollapse3Result1');
+
+    let success = false;
+    collapseEl.addEventListener('shown.bs.collapse', () => success = true);
+    simulateInput(triggerEl, true);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse3Checkbox2CheckedNothing(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse3');
+    const triggerEl = document.querySelector('#checkboxCollapse3Trigger2');
+    const resultEl = document.querySelector('#checkboxCollapse3Result2');
+
+    let success = true;
+    collapseEl.addEventListener('shown.bs.collapse', () => success = false);
+    collapseEl.addEventListener('hidden.bs.collapse', () => success = false);
+    simulateInput(triggerEl, true);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse3Checkbox2UnCheckedNothing(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse3');
+    const triggerEl = document.querySelector('#checkboxCollapse3Trigger2');
+    const resultEl = document.querySelector('#checkboxCollapse3Result3');
+
+    let success = true;
+    collapseEl.addEventListener('shown.bs.collapse', () => success = false);
+    collapseEl.addEventListener('hidden.bs.collapse', () => success = false);
+    simulateInput(triggerEl, false);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse3Checkbox1UnCheckedHides(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse3');
+    const triggerEl = document.querySelector('#checkboxCollapse3Trigger1');
+    const resultEl = document.querySelector('#checkboxCollapse3Result4');
+
+    let success = false;
+    collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
+    simulateInput(triggerEl, false);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse3Checkbox2CheckedShows(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse3');
+    const triggerEl = document.querySelector('#checkboxCollapse3Trigger2');
+    const resultEl = document.querySelector('#checkboxCollapse3Result5');
+
+    let success = false;
+    collapseEl.addEventListener('shown.bs.collapse', () => success = true);
+    simulateInput(triggerEl, true);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse3Checkbox1CheckedNothing(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse3');
+    const triggerEl = document.querySelector('#checkboxCollapse3Trigger1');
+    const resultEl = document.querySelector('#checkboxCollapse3Result6');
+
+    let success = true;
+    collapseEl.addEventListener('shown.bs.collapse', () => success = false);
+    collapseEl.addEventListener('hidden.bs.collapse', () => success = false);
+    simulateInput(triggerEl, true);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse3Checkbox1UnCheckedNothing(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse3');
+    const triggerEl = document.querySelector('#checkboxCollapse3Trigger1');
+    const resultEl = document.querySelector('#checkboxCollapse3Result7');
+
+    let success = true;
+    collapseEl.addEventListener('shown.bs.collapse', () => success = false);
+    collapseEl.addEventListener('hidden.bs.collapse', () => success = false);
+    simulateInput(triggerEl, false);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse3Checkbox2UnCheckedHides(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse3');
+    const triggerEl = document.querySelector('#checkboxCollapse3Trigger2');
+    const resultEl = document.querySelector('#checkboxCollapse3Result8');
+
+    let success = false;
+    collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
+    simulateInput(triggerEl, false);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse4Checkbox1CheckedHides(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse4');
+    const triggerEl = document.querySelector('#checkboxCollapse4Trigger1');
+    const resultEl = document.querySelector('#checkboxCollapse4Result1');
+
+    let success = false;
+    collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
+    simulateInput(triggerEl, true);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse4Checkbox2CheckedNothing(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse4');
+    const triggerEl = document.querySelector('#checkboxCollapse4Trigger2');
+    const resultEl = document.querySelector('#checkboxCollapse4Result2');
+
+    let success = true;
+    collapseEl.addEventListener('shown.bs.collapse', () => success = false);
+    collapseEl.addEventListener('hidden.bs.collapse', () => success = false);
+    simulateInput(triggerEl, true);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse4Checkbox2UnCheckedNothing(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse4');
+    const triggerEl = document.querySelector('#checkboxCollapse4Trigger2');
+    const resultEl = document.querySelector('#checkboxCollapse4Result3');
+
+    let success = true;
+    collapseEl.addEventListener('shown.bs.collapse', () => success = false);
+    collapseEl.addEventListener('hidden.bs.collapse', () => success = false);
+    simulateInput(triggerEl, false);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse4Checkbox1UnCheckedShows(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse4');
+    const triggerEl = document.querySelector('#checkboxCollapse4Trigger1');
+    const resultEl = document.querySelector('#checkboxCollapse4Result4');
+
+    let success = false;
+    collapseEl.addEventListener('shown.bs.collapse', () => success = true);
+    simulateInput(triggerEl, false);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse4Checkbox2CheckedHides(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse4');
+    const triggerEl = document.querySelector('#checkboxCollapse4Trigger2');
+    const resultEl = document.querySelector('#checkboxCollapse4Result5');
+
+    let success = false;
+    collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
+    simulateInput(triggerEl, true);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse4Checkbox1CheckedNothing(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse4');
+    const triggerEl = document.querySelector('#checkboxCollapse4Trigger1');
+    const resultEl = document.querySelector('#checkboxCollapse4Result6');
+
+    let success = true;
+    collapseEl.addEventListener('shown.bs.collapse', () => success = false);
+    collapseEl.addEventListener('hidden.bs.collapse', () => success = false);
+    simulateInput(triggerEl, true);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse4Checkbox1UnCheckedNothing(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse4');
+    const triggerEl = document.querySelector('#checkboxCollapse4Trigger1');
+    const resultEl = document.querySelector('#checkboxCollapse4Result7');
+
+    let success = true;
+    collapseEl.addEventListener('shown.bs.collapse', () => success = false);
+    collapseEl.addEventListener('hidden.bs.collapse', () => success = false);
+    simulateInput(triggerEl, false);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testCheckboxCollapse4Checkbox2UnCheckedShows(resolve, reject) {
+    const collapseEl = document.querySelector('#checkboxCollapse4');
+    const triggerEl = document.querySelector('#checkboxCollapse4Trigger2');
+    const resultEl = document.querySelector('#checkboxCollapse4Result8');
+
+    let success = false;
+    collapseEl.addEventListener('shown.bs.collapse', () => success = true);
+    simulateInput(triggerEl, false);
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testSelectCollapse1Shows(resolve, reject) {
+    const collapseEl = document.querySelector('#selectCollapse1');
+    const triggerEl = document.querySelector('#selectCollapse1Trigger1');
+    const resultEl = document.querySelector('#selectCollapse1Result1');
+
+    let success = false;
+    collapseEl.addEventListener('shown.bs.collapse', () => success = true);
+    simulateInput(triggerEl, 'Show');
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testSelectCollapse1Hides(resolve, reject) {
+    const collapseEl = document.querySelector('#selectCollapse1');
+    const triggerEl = document.querySelector('#selectCollapse1Trigger1');
+    const resultEl = document.querySelector('#selectCollapse1Result2');
+
+    let success = false;
+    collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
+    simulateInput(triggerEl, '');
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testSelectCollapse2Shows(resolve, reject) {
+    const collapseEl = document.querySelector('#selectCollapse2');
+    const triggerEl = document.querySelector('#selectCollapse2Trigger1');
+    const resultEl = document.querySelector('#selectCollapse2Result1');
+
+    let success = false;
+    collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
+    simulateInput(triggerEl, 'Hide');
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testSelectCollapse2Hides(resolve, reject) {
+    const collapseEl = document.querySelector('#selectCollapse2');
+    const triggerEl = document.querySelector('#selectCollapse2Trigger1');
+    const resultEl = document.querySelector('#selectCollapse2Result2');
+
+    let success = false;
+    collapseEl.addEventListener('shown.bs.collapse', () => success = true);
+    simulateInput(triggerEl, '');
+    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testSelectCollapse3Shows(resolve, reject) {
+    const collapse3El = document.querySelector('#selectCollapse3');
+    const collapse4El = document.querySelector('#selectCollapse4');
+    const triggerEl = document.querySelector('#selectCollapse34Trigger1');
+    const resultEl = document.querySelector('#selectCollapse34Result1');
+
+    let success1 = false;
+    let success2 = true;
+    collapse3El.addEventListener('shown.bs.collapse', () => success1 = true);
+    collapse4El.addEventListener('shown.bs.collapse', () => success2 = false);
+    simulateInput(triggerEl, '1st');
+    setTimeout(() => success1 && success2 ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testSelectCollapse4Shows(resolve, reject) {
+    const collapse3El = document.querySelector('#selectCollapse3');
+    const collapse4El = document.querySelector('#selectCollapse4');
+    const triggerEl = document.querySelector('#selectCollapse34Trigger1');
+    const resultEl = document.querySelector('#selectCollapse34Result2');
+
+    let success1 = false;
+    let success2 = false;
+    collapse3El.addEventListener('hidden.bs.collapse', () => success1 = true);
+    collapse4El.addEventListener('shown.bs.collapse', () => success2 = true);
+    simulateInput(triggerEl, '2nd');
+    setTimeout(() => success1 && success2 ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testSelectCollapse34Hides(resolve, reject) {
+    const collapse3El = document.querySelector('#selectCollapse3');
+    const collapse4El = document.querySelector('#selectCollapse4');
+    const triggerEl = document.querySelector('#selectCollapse34Trigger1');
+    const resultEl = document.querySelector('#selectCollapse34Result3');
+
+    let success1 = true;
+    let success2 = false;
+    collapse3El.addEventListener('shown.bs.collapse', () => success1 = false);
+    collapse3El.addEventListener('hidden.bs.collapse', () => success1 = false);
+    collapse4El.addEventListener('hidden.bs.collapse', () => success2 = true);
+    simulateInput(triggerEl, '');
+    setTimeout(() => success1 && success2 ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testSelectCollapse5Hides(resolve, reject) {
+    const collapse5El = document.querySelector('#selectCollapse5');
+    const collapse6El = document.querySelector('#selectCollapse6');
+    const triggerEl = document.querySelector('#selectCollapse56Trigger1');
+    const resultEl = document.querySelector('#selectCollapse56Result1');
+
+    let success1 = false;
+    let success2 = true;
+    collapse5El.addEventListener('hidden.bs.collapse', () => success1 = true);
+    collapse6El.addEventListener('hidden.bs.collapse', () => success2 = false);
+    simulateInput(triggerEl, '1st');
+    setTimeout(() => success1 && success2 ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testSelectCollapse6Hides(resolve, reject) {
+    const collapse5El = document.querySelector('#selectCollapse5');
+    const collapse6El = document.querySelector('#selectCollapse6');
+    const triggerEl = document.querySelector('#selectCollapse56Trigger1');
+    const resultEl = document.querySelector('#selectCollapse56Result2');
+
+    let success1 = false;
+    let success2 = false;
+    collapse5El.addEventListener('shown.bs.collapse', () => success1 = true);
+    collapse6El.addEventListener('hidden.bs.collapse', () => success2 = true);
+    simulateInput(triggerEl, '2nd');
+    setTimeout(() => success1 && success2 ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function testSelectCollapse56Shows(resolve, reject) {
+    const collapse5El = document.querySelector('#selectCollapse5');
+    const collapse6El = document.querySelector('#selectCollapse6');
+    const triggerEl = document.querySelector('#selectCollapse56Trigger1');
+    const resultEl = document.querySelector('#selectCollapse56Result3');
+
+    let success1 = true;
+    let success2 = false;
+    collapse5El.addEventListener('hidden.bs.collapse', () => success1 = false);
+    collapse5El.addEventListener('shown.bs.collapse', () => success1 = false);
+    collapse6El.addEventListener('shown.bs.collapse', () => success2 = true);
+    simulateInput(triggerEl, '');
+    setTimeout(() => success1 && success2 ? resolve(resultEl) : reject(resultEl), 400);
+  }
+
+  function simulateInput(el, value) {
+    if (['radio', 'checkbox'].includes(el.type)) {
+      el.checked = value;
+    }
+    else {
+      el.value = value;
+    }
+    el.dispatchEvent(new Event('input', {bubbles: true}));
+  }
+
+  function showSuccess(resultEl) {
+    resultEl.classList.replace('text-warning', 'text-success');
+    resultEl.innerHTML = 'Success';
+  }
+
+  function showFailure(resultEl) {
+    resultEl.classList.replace('text-warning', 'text-danger');
+    resultEl.innerHTML = 'Failed';
+  }
+</script>
+</body>
+</html>
