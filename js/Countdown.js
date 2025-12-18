@@ -58,10 +58,10 @@ class Countdown {
     if (el.maxLength > 0) {
       elOptions.maxLength = el.maxLength;
     }
-    if (el.dataset.ispLabel) {
-      elOptions.label = el.dataset.ispLabel;
+    if (el.dataset.label) {
+      elOptions.label = el.dataset.label;
     }
-    if (el.dataset.ispShowAll === 'true') {
+    if (el.dataset.showAll === 'true') {
       elOptions.showAll = true;
     }
 
