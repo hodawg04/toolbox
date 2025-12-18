@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mask Tests</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1/css/all.css" rel="stylesheet"/>
+  <link href="./assets/highlight.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container-fluid p-3">
+  <div class="row g-3">
+    <div class="col-12">
+      <div class="card">
+        <h6 class="card-header">Test Results</h6>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-6">Adding Phone Mask Input Test: <span id="result1" class="text-warning">Running</span></div>
+            <div class="col-6">Adding Zip Mask Input Test: <span id="result2" class="text-warning">Running</span></div>
+            <div class="col-6">Adding SSN Mask Input Test: <span id="result3" class="text-warning">Running</span></div>
+            <div class="col-6">Adding Decimal Mask Input Test: <span id="result4" class="text-warning">Running</span></div>
+            <div class="col-6">Adding Date Mask Input Test: <span id="result5" class="text-warning">Running</span></div>
+            <div class="col-6">Adding Date Time Mask Input Test: <span id="result6" class="text-warning">Running</span></div>
+            <div class="col-6">Adding Month Year Mask Input Test: <span id="result7" class="text-warning">Running</span></div>
+            <div class="col-6">Adding Year Mask Input Test: <span id="result8" class="text-warning">Running</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="card card-body">
+        <p>
+          This module is a wrapper for the Inputmask library found below.
+          I also add a MutationObserver to initialize new masks when added to the DOM.
+        </p>
+        <a href="https://robinherbots.github.io/Inputmask/" target="_blank">https://robinherbots.github.io/Inputmask/</a>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="card">
+        <h4 class="card-header text-bg-primary">Phone Mask</h4>
+        <div id="test1" class="card-body">
+          <input type="text" class="form-control" data-isp-toggle="phone-mask">
+        </div>
+
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">HTML</span>
+          <a href="#" data-clipboard="#template1" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#template1"></code></pre>
+          <template id="template1">
+            <input type="text" class="form-control" data-isp-toggle="phone-mask">
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="card">
+        <h4 class="card-header text-bg-primary">Zip Mask</h4>
+        <div id="test2" class="card-body">
+          <input type="text" class="form-control" data-isp-toggle="zip-mask">
+        </div>
+
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">HTML</span>
+          <a href="#" data-clipboard="#template2" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#template2"></code></pre>
+          <template id="template2">
+            <input type="text" class="form-control" data-isp-toggle="zip-mask">
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="card">
+        <h4 class="card-header text-bg-primary">SSN Mask</h4>
+        <div id="test3" class="card-body">
+          <input type="text" class="form-control" data-isp-toggle="ssn-mask">
+        </div>
+
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">HTML</span>
+          <a href="#" data-clipboard="#template3" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#template3"></code></pre>
+          <template id="template3">
+            <input type="text" class="form-control" data-isp-toggle="ssn-mask">
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="card">
+        <h4 class="card-header text-bg-primary">Decimal Mask</h4>
+        <div id="test4" class="card-body">
+          <input type="text" class="form-control" data-isp-toggle="decimal-mask">
+        </div>
+
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">HTML</span>
+          <a href="#" data-clipboard="#template4" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#template4"></code></pre>
+          <template id="template4">
+            <input type="text" class="form-control" data-isp-toggle="decimal-mask">
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="card">
+        <h4 class="card-header text-bg-primary">Date Mask</h4>
+        <div id="test5" class="card-body">
+          <input type="text" class="form-control" data-isp-toggle="date-mask">
+        </div>
+
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">HTML</span>
+          <a href="#" data-clipboard="#template5" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#template5"></code></pre>
+          <template id="template5">
+            <input type="text" class="form-control" data-isp-toggle="date-mask">
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="card">
+        <h4 class="card-header text-bg-primary">Date Time Mask</h4>
+        <div id="test6" class="card-body">
+          <input type="text" class="form-control" data-isp-toggle="date-time-mask">
+        </div>
+
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">HTML</span>
+          <a href="#" data-clipboard="#template6" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#template6"></code></pre>
+          <template id="template6">
+            <input type="text" class="form-control" data-isp-toggle="date-time-mask">
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="card">
+        <h4 class="card-header text-bg-primary">Month Year Mask</h4>
+        <div id="test7" class="card-body">
+          <input type="text" class="form-control" data-isp-toggle="month-year-mask">
+        </div>
+
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">HTML</span>
+          <a href="#" data-clipboard="#template7" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#template7"></code></pre>
+          <template id="template7">
+            <input type="text" class="form-control" data-isp-toggle="month-year-mask">
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="card">
+        <h4 class="card-header text-bg-primary">Year Mask</h4>
+        <div id="test8" class="card-body">
+          <input type="text" class="form-control" data-isp-toggle="year-mask">
+        </div>
+
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">HTML</span>
+          <a href="#" data-clipboard="#template8" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#template8"></code></pre>
+          <template id="template8">
+            <input type="text" class="form-control" data-isp-toggle="year-mask">
+          </template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3/+esm"></script>
+<script type="module">
+  import { phoneMask, zipMask, ssnMask, decimalMask, dateMask, dateTimeMask, monthYearMask, yearMask } from "../js/Mask.js";
+  import { runTests, initExamples } from "./assets/TestUtils.js";
+
+  (function main() {
+    initExamples();
+  })();
+
+  (function testDoubleInitWillNotBreak() {
+    phoneMask();
+    phoneMask();
+    zipMask();
+    zipMask();
+    ssnMask();
+    ssnMask();
+    decimalMask();
+    decimalMask();
+    dateMask();
+    dateMask();
+    dateTimeMask();
+    dateTimeMask();
+    monthYearMask();
+    monthYearMask();
+    yearMask();
+    yearMask();
+  })();
+
+  (async function initTests() {
+    await runTests([
+      addingPhoneMaskInputTest,
+      addingZipMaskInputTest,
+      addingSsnMaskInputTest,
+      addingDecimalMaskInputTest,
+      addingDateMaskInputTest,
+      addingDateTimeMaskInputTest,
+      addingMonthYearMaskInputTest,
+      addingYearMaskInputTest
+    ]);
+  })();
+
+  function addingPhoneMaskInputTest(resolve, reject) {
+    const testEl = document.querySelector('#test1');
+    const templateEl = document.querySelector('#template1');
+    const resultEl = document.querySelector('#result1');
+
+    testEl.insertAdjacentHTML('beforeend', templateEl.innerHTML);
+    setTimeout(() => checkForInputmask(testEl) ? resolve(resultEl) : reject(resultEl), 100);
+  }
+
+  function addingZipMaskInputTest(resolve, reject) {
+    const testEl = document.querySelector('#test2');
+    const templateEl = document.querySelector('#template2');
+    const resultEl = document.querySelector('#result2');
+
+    testEl.insertAdjacentHTML('beforeend', templateEl.innerHTML);
+    setTimeout(() => checkForInputmask(testEl) ? resolve(resultEl) : reject(resultEl), 100);
+  }
+
+  function addingSsnMaskInputTest(resolve, reject) {
+    const testEl = document.querySelector('#test3');
+    const templateEl = document.querySelector('#template3');
+    const resultEl = document.querySelector('#result3');
+
+    testEl.insertAdjacentHTML('beforeend', templateEl.innerHTML);
+    setTimeout(() => checkForInputmask(testEl) ? resolve(resultEl) : reject(resultEl), 100);
+  }
+
+  function addingDecimalMaskInputTest(resolve, reject) {
+    const testEl = document.querySelector('#test4');
+    const templateEl = document.querySelector('#template4');
+    const resultEl = document.querySelector('#result4');
+
+    testEl.insertAdjacentHTML('beforeend', templateEl.innerHTML);
+    setTimeout(() => checkForInputmask(testEl) ? resolve(resultEl) : reject(resultEl), 100);
+  }
+
+  function addingDateMaskInputTest(resolve, reject) {
+    const testEl = document.querySelector('#test5');
+    const templateEl = document.querySelector('#template5');
+    const resultEl = document.querySelector('#result5');
+
+    testEl.insertAdjacentHTML('beforeend', templateEl.innerHTML);
+    setTimeout(() => checkForInputmask(testEl) ? resolve(resultEl) : reject(resultEl), 100);
+  }
+
+  function addingDateTimeMaskInputTest(resolve, reject) {
+    const testEl = document.querySelector('#test6');
+    const templateEl = document.querySelector('#template6');
+    const resultEl = document.querySelector('#result6');
+
+    testEl.insertAdjacentHTML('beforeend', templateEl.innerHTML);
+    setTimeout(() => checkForInputmask(testEl) ? resolve(resultEl) : reject(resultEl), 100);
+  }
+
+  function addingMonthYearMaskInputTest(resolve, reject) {
+    const testEl = document.querySelector('#test7');
+    const templateEl = document.querySelector('#template7');
+    const resultEl = document.querySelector('#result7');
+
+    testEl.insertAdjacentHTML('beforeend', templateEl.innerHTML);
+    setTimeout(() => checkForInputmask(testEl) ? resolve(resultEl) : reject(resultEl), 100);
+  }
+
+  function addingYearMaskInputTest(resolve, reject) {
+    const testEl = document.querySelector('#test8');
+    const templateEl = document.querySelector('#template8');
+    const resultEl = document.querySelector('#result8');
+
+    testEl.insertAdjacentHTML('beforeend', templateEl.innerHTML);
+    setTimeout(() => checkForInputmask(testEl) ? resolve(resultEl) : reject(resultEl), 100);
+  }
+
+  function checkForInputmask(divEl) {
+    let success = true;
+
+    for (const el of divEl.children) {
+      if (!el['inputmask']) {
+        success = false;
+        break;
+      }
+    }
+
+    divEl.children[1].remove();
+    return success;
+  }
+</script>
+</body>
+</html>
