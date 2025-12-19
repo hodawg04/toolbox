@@ -596,6 +596,10 @@
   import { initRadioCollapse, initCheckboxCollapse, initSelectCollapse } from "../js/CollapseUtils.js";
   import { runTests, simulateInput, initExamples } from "./assets/TestUtils.js";
 
+  (function main() {
+    initExamples();
+  })();
+
   (function testDoubleInitWillNotBreak() {
     initRadioCollapse();
     initCheckboxCollapse();
@@ -604,11 +608,9 @@
     initRadioCollapse();
     initCheckboxCollapse();
     initSelectCollapse();
-
-    initExamples();
   })();
 
-  (async function initCollapseUtilsTest() {
+  (async function initTests() {
     await runTests([
       testRadioCollapse1Shows,
       testRadioCollapse1Hides,
