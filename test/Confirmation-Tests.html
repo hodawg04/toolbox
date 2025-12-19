@@ -209,11 +209,11 @@
 <script type="module">
   import { Confirmation } from "../js/Confirmation.js";
   import { Tooltip } from "https://cdn.jsdelivr.net/npm/bootstrap@5.3/+esm";
-  import { runTests, preventSubmit, initExamples } from "./assets/TestUtils.js";
+  import { runTests, initExamples } from "./assets/TestUtils.js";
 
   (function main() {
     initExamples();
-    preventSubmit();
+
     const tooltipEls = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     tooltipEls.forEach(el => new Tooltip(el));
   })();
@@ -224,6 +224,9 @@
   })();
 
   (async function initConfirmationTest() {
+    let alertText;
+    preventSubmit('BOOM!!! TEST FAILED!!! You should not have gotten here!!!');
+
     await runTests([
       basicConfirmCancelTest,
       basicConfirmTest,
@@ -239,6 +242,19 @@
       btnConfirmationTest,
       formConfirmationTest
     ]);
+
+    preventSubmit('Form Submitted');
+
+    function preventSubmit(text) {
+      if (!alertText) {
+        document.addEventListener('submit', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          alert(alertText);
+        });
+      }
+      alertText = text;
+    }
   })();
 
   function basicConfirmCancelTest(resolve, reject) {
@@ -247,10 +263,20 @@
     const resultEl = document.querySelector('#basicConfirmResult1');
 
     let success = true;
-    formEl.addEventListener('submit', stopSubmitAnd(() => success = false));
+    const onSubmit = e => {
+      e.preventDefault();
+      e.stopPropagation();
+      success = false;
+    }
+
+    formEl.addEventListener('submit', onSubmit);
     onConfirmationSimulateNoClick();
     btnEl.click();
-    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 500);
+
+    setTimeout(() => {
+      formEl.removeEventListener('submit', onSubmit);
+      success ? resolve(resultEl) : reject(resultEl);
+    }, 500);
   }
 
   function basicConfirmTest(resolve, reject) {
@@ -259,10 +285,20 @@
     const resultEl = document.querySelector('#basicConfirmResult2');
 
     let success = false;
-    formEl.addEventListener('submit', stopSubmitAnd(() => success = true));
+    const onSubmit = e => {
+      e.preventDefault();
+      e.stopPropagation();
+      success = true
+    };
+
+    formEl.addEventListener('submit', onSubmit);
     onConfirmationSimulateYesClick();
     btnEl.click();
-    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 500);
+
+    setTimeout(() => {
+      formEl.removeEventListener('submit', onSubmit);
+      success ? resolve(resultEl) : reject(resultEl);
+    }, 500);
   }
 
   function btnNotInFormTest(resolve, reject) {
@@ -271,10 +307,20 @@
     const resultEl = document.querySelector('#btnNotInFormResult1');
 
     let success = false;
-    formEl.addEventListener('submit', stopSubmitAnd(() => success = true));
+    const onSubmit = e => {
+      e.preventDefault();
+      e.stopPropagation();
+      success = true
+    };
+
+    formEl.addEventListener('submit', onSubmit);
     onConfirmationSimulateYesClick();
     btnEl.click();
-    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 500);
+
+    setTimeout(() => {
+      formEl.removeEventListener('submit', onSubmit);
+      success ? resolve(resultEl) : reject(resultEl);
+    }, 500);
   }
 
   function btnValueSubmittedTest(resolve, reject) {
@@ -283,10 +329,20 @@
     const resultEl = document.querySelector('#btnValueSubmittedResult1');
 
     let success = false;
-    formEl.addEventListener('submit', stopSubmitAnd(e => success = (e.submitter === btnEl)));
+    const onSubmit = e => {
+      e.preventDefault();
+      e.stopPropagation();
+      success = (e.submitter === btnEl);
+    };
+
+    formEl.addEventListener('submit', onSubmit);
     onConfirmationSimulateYesClick();
     btnEl.click();
-    setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 500);
+
+    setTimeout(() => {
+      formEl.removeEventListener('submit', onSubmit);
+      success ? resolve(resultEl) : reject(resultEl);
+    }, 500);
   }
 
   function customTitleTest(resolve, reject) {
@@ -381,27 +437,21 @@
     let success1 = true;
     let success2 = false;
     const onSubmitFails = () => success1 = false;
+    const onSubmitSuccess = e => {
+      e.preventDefault();
+      e.stopPropagation();
+      success2 = true;
+    };
 
     formEl.addEventListener('submit', onSubmitFails);
     btnEl.click();
     formEl.removeEventListener('submit', onSubmitFails);
-
-    formEl.addEventListener('submit', e => {
-      e.preventDefault();
-      e.stopPropagation();
-      success2 = true;
-    });
-
+    formEl.addEventListener('submit', onSubmitSuccess);
     onConfirmationSimulateYesClick();
-    setTimeout(() => success1 && success2 ? resolve(resultEl) : reject(resultEl), 500);
-  }
-
-  function stopSubmitAnd(fn) {
-    return e => {
-      e.preventDefault();
-      e.stopPropagation();
-      fn(e);
-    };
+    setTimeout(() => {
+      formEl.removeEventListener('submit', onSubmitSuccess);
+      success1 && success2 ? resolve(resultEl) : reject(resultEl);
+    }, 500);
   }
 
   function onConfirmationSimulateNoClick(beforeClickFn) {

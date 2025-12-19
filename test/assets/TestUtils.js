@@ -34,14 +34,6 @@ function simulateInput(inputEl, value) {
   inputEl.dispatchEvent(new Event('input', {bubbles: true}));
 }
 
-function preventSubmit() {
-  document.addEventListener('submit', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    alert('BOOM!!! TEST FAILED!!! You should not have gotten here!!!');
-  });
-}
-
 function initExamples() {
   for (const el of document.querySelectorAll('[data-code-target]')) {
     const template = getTemplateText(el.dataset.codeTarget);
@@ -76,8 +68,9 @@ function initExamples() {
   function getTemplateText(selector) {
     const template = document.querySelector(selector).innerHTML;
     const whitespace = template.match(/^\n(\s*)/)[1];
-    return template.replaceAll('\n' + whitespace, '\n').trim();
+    const html = template.replaceAll('\n' + whitespace, '\n').trim();
+    return html.replaceAll('=""', '');
   }
 }
 
-export { runTests, simulateInput, preventSubmit, initExamples }
+export { runTests, simulateInput, initExamples }

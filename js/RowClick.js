@@ -37,6 +37,7 @@ class RowClick {
    * @property {url} [href] - href for when you want to go to a new url
    * @property {string} [target] - target for href allowing you to specify '_blank'
    * @property {string} [modalTarget] - selector to open a modal
+   * @property {string} [formTarget] - selector to a form or submit button to submit a form
    */
   settings;
 
@@ -92,7 +93,7 @@ class RowClick {
     const settings = rowClick.settings;
 
     if (settings.href) {
-      window.open(settings.href, settings.target).focus();
+      window.open(settings.href, settings.target)?.focus();
     }
     else if (settings.modalTarget) {
       const modalEl = document.querySelector(settings.modalTarget);
