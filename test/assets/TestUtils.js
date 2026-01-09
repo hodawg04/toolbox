@@ -1,26 +1,28 @@
 // noinspection JSUnusedGlobalSymbols
 import hljs from 'https://cdn.jsdelivr.net/npm/highlight.js@11.11/+esm';
-import { Toast } from "https://cdn.jsdelivr.net/npm/bootstrap@5.3/+esm";
+import { Collapse, Toast } from "https://cdn.jsdelivr.net/npm/bootstrap@5.3/+esm";
 
-async function runTests(tests) {
-  for (const test of tests) {
+function runTests(tests, selector) {
+  const collapseEl = document.querySelector(selector);
+  collapseEl.addEventListener('shown.bs.collapse', startTestsAfterShow);
+  Collapse.getOrCreateInstance(collapseEl).show();
+
+  async function startTestsAfterShow() {
+    for (const test of tests) {
+      await runTest(test);
+    }
+  }
+
+  async function runTest(test) {
     try {
-      const result = await new Promise(test);
-      showSuccess(result);
+      const resultEl = await new Promise(test);
+      resultEl.classList.replace('text-warning', 'text-success');
+      resultEl.innerHTML = 'Success';
     }
-    catch (err) {
-      showFailure(err);
+    catch (resultEl) {
+      resultEl.classList.replace('text-warning', 'text-danger');
+      resultEl.innerHTML = 'Failed';
     }
-  }
-
-  function showSuccess(resultEl) {
-    resultEl.classList.replace('text-warning', 'text-success');
-    resultEl.innerHTML = 'Success';
-  }
-
-  function showFailure(resultEl) {
-    resultEl.classList.replace('text-warning', 'text-danger');
-    resultEl.innerHTML = 'Failed';
   }
 }
 
