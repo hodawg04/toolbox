@@ -1,6 +1,4 @@
----
----
-
+<!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 <head>
   <meta charset="UTF-8">
@@ -8,10 +6,56 @@
   <title>CollapseUtils.js</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1/css/all.css" rel="stylesheet"/>
-  <link href="/toolbox/assets/highlight.css" rel="stylesheet"/>
+  <link href="/toolbox/assets/style.css" rel="stylesheet"/>
 </head>
+
 <body>
-{% include nav.html %}
+<nav class="navbar navbar-expand-lg bg-body-tertiary position-sticky top-0 z-1">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/toolbox">ISP Toolbox</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navContent" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto d-lg-none">
+        <li class="nav-item"><h6 class="mb-1">Modules</h6></li>
+        <li class="nav-item"><a href="/toolbox/CollapseUtils.html" class="nav-link">CollapseUtils.js</a></li>
+        <li class="nav-item"><a href="/toolbox/Confirmation.html" class="nav-link">Confirmation.js</a></li>
+        <li class="nav-item"><a href="/toolbox/CopyText.html" class="nav-link">CopyText.js</a></li>
+        <li class="nav-item"><a href="/toolbox/Countdown.html" class="nav-link">Countdown.js</a></li>
+      </ul>
+      <ul class="navbar-nav ms-auto d-none d-lg-flex">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Modules</a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a href="/toolbox/CollapseUtils.html" class="dropdown-item">CollapseUtils.js</a>
+            <a href="/toolbox/Confirmation.html" class="dropdown-item">Confirmation.js</a>
+            <a href="/toolbox/CopyText.html" class="dropdown-item">CopyText.js</a>
+            <a href="/toolbox/Countdown.html" class="dropdown-item">Countdown.js</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contents</a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a href="#card-1" class="dropdown-item">1. Hidden collapse controlled by multiple radio inputs</a>
+            <a href="#card-2" class="dropdown-item">2. Shown collapse controlled by multiple radio inputs</a>
+            <a href="#card-3" class="dropdown-item">3. Hidden collapse controlled by a checkbox input</a>
+            <a href="#card-4" class="dropdown-item">4. Shown collapse controlled by a checkbox input</a>
+            <a href="#card-5" class="dropdown-item">5. Hidden collapse controlled by multiple checkbox inputs</a>
+            <a href="#card-6" class="dropdown-item">6. Shown collapse controlled by multiple checkbox inputs</a>
+            <a href="#card-7" class="dropdown-item">7. A hidden collapse controlled by a select input</a>
+            <a href="#card-8" class="dropdown-item">8. A shown collapse controlled by select input</a>
+            <a href="#card-9" class="dropdown-item">9. Multiple hidden collapses controlled by a select input</a>
+            <a href="#card-10" class="dropdown-item">10. Multiple shown collapses controlled by a select input</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button id="execTests" type="button" class="nav-link" data-target="#tests">Run Tests</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <div class="container-fluid p-3">
   <div id="tests" class="collapse">
@@ -87,527 +131,505 @@
     </div>
   </div>
 
-  <div class="d-flex">
-    <div class="flex-shrink-0 position-relative">
-      <div class="card position-sticky" style="top: 1rem;">
-        <h4 class="card-header text-bg-primary">CollapseUtils.js</h4>
-        <div class="list-group list-group-flush">
-          <a href="#card-1" class="list-group-item list-group-item-action">1. Hidden collapse controlled by multiple radio inputs</a>
-          <a href="#card-2" class="list-group-item list-group-item-action">2. Shown collapse controlled by multiple radio inputs</a>
-          <a href="#card-3" class="list-group-item list-group-item-action">3. Hidden collapse controlled by a checkbox input</a>
-          <a href="#card-4" class="list-group-item list-group-item-action">4. Shown collapse controlled by a checkbox input</a>
-          <a href="#card-5" class="list-group-item list-group-item-action">5. Hidden collapse controlled by multiple checkbox inputs</a>
-          <a href="#card-6" class="list-group-item list-group-item-action">6. Shown collapse controlled by multiple checkbox inputs</a>
-          <a href="#card-7" class="list-group-item list-group-item-action">7. A hidden collapse controlled by a select input</a>
-          <a href="#card-8" class="list-group-item list-group-item-action">8. A shown collapse controlled by select input</a>
-          <a href="#card-9" class="list-group-item list-group-item-action">9. Multiple hidden collapses controlled by a select input</a>
-          <a href="#card-10" class="list-group-item list-group-item-action">10. Multiple shown collapses controlled by a select input</a>
+  <div class="row g-3">
+    <div class="col-12">
+      <div id="card-1" class="anchor-offset"></div>
+      <div class="card">
+        <h4 class="card-header text-bg-primary">Hidden collapse controlled by multiple radio inputs</h4>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-7 py-2">
+              <div class="form-check" data-isp-toggle="radio-collapse" data-target="#radioCollapse1" data-action="show">
+                <input id="radioCollapse1Trigger1" class="form-check-input" type="radio" name="radioCollapse1">
+                <label for="radioCollapse1Trigger1" class="form-check-label">Show the collapse</label>
+              </div>
+              <div class="form-check" data-isp-toggle="radio-collapse" data-target="#radioCollapse1" data-action="hide">
+                <input id="radioCollapse1Trigger2" class="form-check-input" type="radio" name="radioCollapse1">
+                <label for="radioCollapse1Trigger2" class="form-check-label">Hide the collapse</label>
+              </div>
+            </div>
+            <div class="col-5">
+              <div id="radioCollapse1" class="collapse flex-fill">
+                <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Radio Button HTML</span>
+          <a href="#" data-clipboard="#radioTemplate1" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#radioTemplate1"></code></pre>
+          <template id="radioTemplate1">
+            <div class="form-check" data-isp-toggle="radio-collapse" data-target="#hiddenCollapseId" data-action="show">
+              <input class="form-check-input" type="radio" name="name">
+              <label class="form-check-label">Show</label>
+            </div>
+            <div class="form-check" data-isp-toggle="radio-collapse" data-target="#hiddenCollapseId" data-action="hide">
+              <input class="form-check-input" type="radio" name="name">
+              <label class="form-check-label">Hide</label>
+            </div>
+          </template>
+        </div>
+
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Collapse HTML</span>
+          <a href="#" data-clipboard="#hiddenCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#hiddenCollapseTemplate"></code></pre>
         </div>
       </div>
     </div>
 
-    <div class="ms-3" style="flex: 1; min-width: 0;">
-      <div class="row g-3">
-        <div class="col-12">
-          <div id="card-1" style="margin-top: -1rem; margin-bottom: 1rem;"></div>
-          <div class="card">
-            <h4 class="card-header text-bg-primary">Hidden collapse controlled by multiple radio inputs</h4>
-            <div class="card-body">
-              <div class="row g-2">
-                <div class="col-7 py-2">
-                  <div class="form-check" data-isp-toggle="radio-collapse" data-target="#radioCollapse1" data-action="show">
-                    <input id="radioCollapse1Trigger1" class="form-check-input" type="radio" name="radioCollapse1">
-                    <label for="radioCollapse1Trigger1" class="form-check-label">Show the collapse</label>
-                  </div>
-                  <div class="form-check" data-isp-toggle="radio-collapse" data-target="#radioCollapse1" data-action="hide">
-                    <input id="radioCollapse1Trigger2" class="form-check-input" type="radio" name="radioCollapse1">
-                    <label for="radioCollapse1Trigger2" class="form-check-label">Hide the collapse</label>
-                  </div>
-                </div>
-                <div class="col-5">
-                  <div id="radioCollapse1" class="collapse flex-fill">
-                    <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
-                  </div>
-                </div>
+    <div class="col-12">
+      <div id="card-2" class="anchor-offset"></div>
+      <div class="card">
+        <h4 class="card-header text-bg-primary">Shown collapse controlled by multiple radio inputs</h4>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-7 py-2">
+              <div class="form-check" data-isp-toggle="radio-collapse" data-target="#radioCollapse2" data-action="hide">
+                <input id="radioCollapse2Trigger1" class="form-check-input" type="radio" name="radioCollapse2">
+                <label for="radioCollapse2Trigger1" class="form-check-label">Hide the collapse</label>
+              </div>
+              <div class="form-check" data-isp-toggle="radio-collapse" data-target="#radioCollapse2" data-action="show">
+                <input id="radioCollapse2Trigger2" class="form-check-input" type="radio" name="radioCollapse2">
+                <label for="radioCollapse2Trigger2" class="form-check-label">Show the collapse</label>
               </div>
             </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Radio Button HTML</span>
-              <a href="#" data-clipboard="#radioTemplate1" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#radioTemplate1"></code></pre>
-              <template id="radioTemplate1">
-                <div class="form-check" data-isp-toggle="radio-collapse" data-target="#hiddenCollapseId" data-action="show">
-                  <input class="form-check-input" type="radio" name="name">
-                  <label class="form-check-label">Show</label>
-                </div>
-                <div class="form-check" data-isp-toggle="radio-collapse" data-target="#hiddenCollapseId" data-action="hide">
-                  <input class="form-check-input" type="radio" name="name">
-                  <label class="form-check-label">Hide</label>
-                </div>
-              </template>
-            </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Collapse HTML</span>
-              <a href="#" data-clipboard="#hiddenCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#hiddenCollapseTemplate"></code></pre>
+            <div class="col-5">
+              <div id="radioCollapse2" class="collapse show flex-fill">
+                <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="col-12">
-          <div id="card-2" style="margin-top: -1rem; margin-bottom: 1rem;"></div>
-          <div class="card">
-            <h4 class="card-header text-bg-primary">Shown collapse controlled by multiple radio inputs</h4>
-            <div class="card-body">
-              <div class="row g-2">
-                <div class="col-7 py-2">
-                  <div class="form-check" data-isp-toggle="radio-collapse" data-target="#radioCollapse2" data-action="hide">
-                    <input id="radioCollapse2Trigger1" class="form-check-input" type="radio" name="radioCollapse2">
-                    <label for="radioCollapse2Trigger1" class="form-check-label">Hide the collapse</label>
-                  </div>
-                  <div class="form-check" data-isp-toggle="radio-collapse" data-target="#radioCollapse2" data-action="show">
-                    <input id="radioCollapse2Trigger2" class="form-check-input" type="radio" name="radioCollapse2">
-                    <label for="radioCollapse2Trigger2" class="form-check-label">Show the collapse</label>
-                  </div>
-                </div>
-                <div class="col-5">
-                  <div id="radioCollapse2" class="collapse show flex-fill">
-                    <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
-                  </div>
-                </div>
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Radio Button HTML</span>
+          <a href="#" data-clipboard="#radioTemplate2" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#radioTemplate2"></code></pre>
+          <template id="radioTemplate2">
+            <div class="form-check" data-isp-toggle="radio-collapse" data-target="#shownCollapseId" data-action="hide">
+              <input class="form-check-input" type="radio" name="name">
+              <label class="form-check-label">Hide</label>
+            </div>
+            <div class="form-check" data-isp-toggle="radio-collapse" data-target="#shownCollapseId" data-action="show">
+              <input class="form-check-input" type="radio" name="name">
+              <label class="form-check-label">Show</label>
+            </div>
+          </template>
+        </div>
+
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Collapse HTML</span>
+          <a href="#" data-clipboard="#shownCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#shownCollapseTemplate"></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div id="card-3" class="anchor-offset"></div>
+      <div class="card">
+        <h4 class="card-header text-bg-primary">Hidden collapse controlled by a checkbox input</h4>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-7 py-4">
+              <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#checkboxCollapse1" data-action="show">
+                <input id="checkboxCollapse1Trigger1" class="form-check-input" type="checkbox">
+                <label for="checkboxCollapse1Trigger1" class="form-check-label">checkbox</label>
               </div>
             </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Radio Button HTML</span>
-              <a href="#" data-clipboard="#radioTemplate2" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#radioTemplate2"></code></pre>
-              <template id="radioTemplate2">
-                <div class="form-check" data-isp-toggle="radio-collapse" data-target="#shownCollapseId" data-action="hide">
-                  <input class="form-check-input" type="radio" name="name">
-                  <label class="form-check-label">Hide</label>
-                </div>
-                <div class="form-check" data-isp-toggle="radio-collapse" data-target="#shownCollapseId" data-action="show">
-                  <input class="form-check-input" type="radio" name="name">
-                  <label class="form-check-label">Show</label>
-                </div>
-              </template>
-            </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Collapse HTML</span>
-              <a href="#" data-clipboard="#shownCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#shownCollapseTemplate"></code></pre>
+            <div class="col-5">
+              <div id="checkboxCollapse1" class="collapse">
+                <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="col-12">
-          <div id="card-3" style="margin-top: -1rem; margin-bottom: 1rem;"></div>
-          <div class="card">
-            <h4 class="card-header text-bg-primary">Hidden collapse controlled by a checkbox input</h4>
-            <div class="card-body">
-              <div class="row g-2">
-                <div class="col-7 py-4">
-                  <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#checkboxCollapse1" data-action="show">
-                    <input id="checkboxCollapse1Trigger1" class="form-check-input" type="checkbox">
-                    <label for="checkboxCollapse1Trigger1" class="form-check-label">checkbox</label>
-                  </div>
-                </div>
-                <div class="col-5">
-                  <div id="checkboxCollapse1" class="collapse">
-                    <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
-                  </div>
-                </div>
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Checkbox HTML</span>
+          <a href="#" data-clipboard="#checkboxTemplate1" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#checkboxTemplate1"></code></pre>
+          <template id="checkboxTemplate1">
+            <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#hiddenCollapseId" data-action="show">
+              <input class="form-check-input" type="checkbox">
+              <label class="form-check-label">checkbox</label>
+            </div>
+          </template>
+        </div>
+
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Collapse HTML</span>
+          <a href="#" data-clipboard="#hiddenCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#hiddenCollapseTemplate"></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div id="card-4" class="anchor-offset"></div>
+      <div class="card">
+        <h4 class="card-header text-bg-primary">Shown collapse controlled by a checkbox input</h4>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-7 py-4">
+              <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#checkboxCollapse2" data-action="hide">
+                <input id="checkboxCollapse2Trigger1" class="form-check-input" type="checkbox">
+                <label for="checkboxCollapse2Trigger1" class="form-check-label">checkbox</label>
               </div>
             </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Checkbox HTML</span>
-              <a href="#" data-clipboard="#checkboxTemplate1" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#checkboxTemplate1"></code></pre>
-              <template id="checkboxTemplate1">
-                <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#hiddenCollapseId" data-action="show">
-                  <input class="form-check-input" type="checkbox">
-                  <label class="form-check-label">checkbox</label>
-                </div>
-              </template>
-            </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Collapse HTML</span>
-              <a href="#" data-clipboard="#hiddenCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#hiddenCollapseTemplate"></code></pre>
+            <div class="col-5">
+              <div id="checkboxCollapse2" class="collapse show">
+                <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="col-12">
-          <div id="card-4" style="margin-top: -1rem; margin-bottom: 1rem;"></div>
-          <div class="card">
-            <h4 class="card-header text-bg-primary">Shown collapse controlled by a checkbox input</h4>
-            <div class="card-body">
-              <div class="row g-2">
-                <div class="col-7 py-4">
-                  <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#checkboxCollapse2" data-action="hide">
-                    <input id="checkboxCollapse2Trigger1" class="form-check-input" type="checkbox">
-                    <label for="checkboxCollapse2Trigger1" class="form-check-label">checkbox</label>
-                  </div>
-                </div>
-                <div class="col-5">
-                  <div id="checkboxCollapse2" class="collapse show">
-                    <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
-                  </div>
-                </div>
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Checkbox HTML</span>
+          <a href="#" data-clipboard="#checkboxTemplate2" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#checkboxTemplate2"></code></pre>
+          <template id="checkboxTemplate2">
+            <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#shownCollapseId" data-action="hide">
+              <input class="form-check-input" type="checkbox">
+              <label class="form-check-label">checkbox</label>
+            </div>
+          </template>
+        </div>
+
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Collapse HTML</span>
+          <a href="#" data-clipboard="#shownCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#shownCollapseTemplate"></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div id="card-5" class="anchor-offset"></div>
+      <div class="card">
+        <h4 class="card-header text-bg-primary">Hidden collapse controlled by multiple checkbox inputs</h4>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-6 py-2">
+              <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#checkboxCollapse3" data-action="show">
+                <input id="checkboxCollapse3Trigger1" class="form-check-input" type="checkbox">
+                <label for="checkboxCollapse3Trigger1" class="form-check-label">1<sup>st</sup> checkbox</label>
+              </div>
+              <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#checkboxCollapse3" data-action="show">
+                <input id="checkboxCollapse3Trigger2" class="form-check-input" type="checkbox">
+                <label for="checkboxCollapse3Trigger2" class="form-check-label">2<sup>nd</sup> checkbox</label>
               </div>
             </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Checkbox HTML</span>
-              <a href="#" data-clipboard="#checkboxTemplate2" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#checkboxTemplate2"></code></pre>
-              <template id="checkboxTemplate2">
-                <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#shownCollapseId" data-action="hide">
-                  <input class="form-check-input" type="checkbox">
-                  <label class="form-check-label">checkbox</label>
-                </div>
-              </template>
-            </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Collapse HTML</span>
-              <a href="#" data-clipboard="#shownCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#shownCollapseTemplate"></code></pre>
+            <div class="col-6">
+              <div id="checkboxCollapse3" class="collapse">
+                <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="col-12">
-          <div id="card-5" style="margin-top: -1rem; margin-bottom: 1rem;"></div>
-          <div class="card">
-            <h4 class="card-header text-bg-primary">Hidden collapse controlled by multiple checkbox inputs</h4>
-            <div class="card-body">
-              <div class="row g-2">
-                <div class="col-6 py-2">
-                  <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#checkboxCollapse3" data-action="show">
-                    <input id="checkboxCollapse3Trigger1" class="form-check-input" type="checkbox">
-                    <label for="checkboxCollapse3Trigger1" class="form-check-label">1<sup>st</sup> checkbox</label>
-                  </div>
-                  <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#checkboxCollapse3" data-action="show">
-                    <input id="checkboxCollapse3Trigger2" class="form-check-input" type="checkbox">
-                    <label for="checkboxCollapse3Trigger2" class="form-check-label">2<sup>nd</sup> checkbox</label>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div id="checkboxCollapse3" class="collapse">
-                    <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
-                  </div>
-                </div>
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Checkbox HTML</span>
+          <a href="#" data-clipboard="#checkboxTemplate3" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#checkboxTemplate3"></code></pre>
+          <template id="checkboxTemplate3">
+            <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#hiddenCollapseId" data-action="show">
+              <input class="form-check-input" type="checkbox">
+              <label class="form-check-label">1<sup>st</sup> checkbox</label>
+            </div>
+            <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#hiddenCollapseId" data-action="show">
+              <input class="form-check-input" type="checkbox">
+              <label class="form-check-label">2<sup>nd</sup> checkbox</label>
+            </div>
+          </template>
+        </div>
+
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Collapse HTML</span>
+          <a href="#" data-clipboard="#hiddenCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#hiddenCollapseTemplate"></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div id="card-6" class="anchor-offset"></div>
+      <div class="card">
+        <h4 class="card-header text-bg-primary">Shown collapse controlled by multiple checkbox inputs</h4>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-6 py-2">
+              <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#checkboxCollapse4" data-action="hide">
+                <input id="checkboxCollapse4Trigger1" class="form-check-input" type="checkbox">
+                <label for="checkboxCollapse4Trigger1" class="form-check-label">1<sup>st</sup> checkbox</label>
+              </div>
+              <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#checkboxCollapse4" data-action="hide">
+                <input id="checkboxCollapse4Trigger2" class="form-check-input" type="checkbox">
+                <label for="checkboxCollapse4Trigger2" class="form-check-label">2<sup>nd</sup> checkbox</label>
               </div>
             </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Checkbox HTML</span>
-              <a href="#" data-clipboard="#checkboxTemplate3" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#checkboxTemplate3"></code></pre>
-              <template id="checkboxTemplate3">
-                <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#hiddenCollapseId" data-action="show">
-                  <input class="form-check-input" type="checkbox">
-                  <label class="form-check-label">1<sup>st</sup> checkbox</label>
-                </div>
-                <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#hiddenCollapseId" data-action="show">
-                  <input class="form-check-input" type="checkbox">
-                  <label class="form-check-label">2<sup>nd</sup> checkbox</label>
-                </div>
-              </template>
-            </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Collapse HTML</span>
-              <a href="#" data-clipboard="#hiddenCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#hiddenCollapseTemplate"></code></pre>
+            <div class="col-6">
+              <div id="checkboxCollapse4" class="collapse show">
+                <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="col-12">
-          <div id="card-6" style="margin-top: -1rem; margin-bottom: 1rem;"></div>
-          <div class="card">
-            <h4 class="card-header text-bg-primary">Shown collapse controlled by multiple checkbox inputs</h4>
-            <div class="card-body">
-              <div class="row g-2">
-                <div class="col-6 py-2">
-                  <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#checkboxCollapse4" data-action="hide">
-                    <input id="checkboxCollapse4Trigger1" class="form-check-input" type="checkbox">
-                    <label for="checkboxCollapse4Trigger1" class="form-check-label">1<sup>st</sup> checkbox</label>
-                  </div>
-                  <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#checkboxCollapse4" data-action="hide">
-                    <input id="checkboxCollapse4Trigger2" class="form-check-input" type="checkbox">
-                    <label for="checkboxCollapse4Trigger2" class="form-check-label">2<sup>nd</sup> checkbox</label>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div id="checkboxCollapse4" class="collapse show">
-                    <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
-                  </div>
-                </div>
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Checkbox HTML</span>
+          <a href="#" data-clipboard="#checkboxTemplate4" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#checkboxTemplate4"></code></pre>
+          <template id="checkboxTemplate4">
+            <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#shownCollapseId" data-action="hide">
+              <input class="form-check-input" type="checkbox">
+              <label class="form-check-label">1<sup>st</sup> checkbox</label>
+            </div>
+            <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#shownCollapseId" data-action="hide">
+              <input class="form-check-input" type="checkbox">
+              <label class="form-check-label">2<sup>nd</sup> checkbox</label>
+            </div>
+          </template>
+        </div>
+
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Collapse HTML</span>
+          <a href="#" data-clipboard="#shownCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#shownCollapseTemplate"></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div id="card-7" class="anchor-offset"></div>
+      <div class="card">
+        <h4 class="card-header text-bg-primary">A hidden collapse controlled by a select input</h4>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-6 py-3">
+              <select id="selectCollapse1Trigger1" class="form-select" data-isp-toggle="select-collapse" data-target="#selectCollapse1">
+                <option data-action="hide"></option>
+                <option value="Show" data-action="show">Show</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <div id="selectCollapse1" class="collapse">
+                <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
               </div>
-            </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Checkbox HTML</span>
-              <a href="#" data-clipboard="#checkboxTemplate4" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#checkboxTemplate4"></code></pre>
-              <template id="checkboxTemplate4">
-                <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#shownCollapseId" data-action="hide">
-                  <input class="form-check-input" type="checkbox">
-                  <label class="form-check-label">1<sup>st</sup> checkbox</label>
-                </div>
-                <div class="form-check" data-isp-toggle="checkbox-collapse" data-target="#shownCollapseId" data-action="hide">
-                  <input class="form-check-input" type="checkbox">
-                  <label class="form-check-label">2<sup>nd</sup> checkbox</label>
-                </div>
-              </template>
-            </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Collapse HTML</span>
-              <a href="#" data-clipboard="#shownCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#shownCollapseTemplate"></code></pre>
             </div>
           </div>
         </div>
 
-        <div class="col-12">
-          <div id="card-7" style="margin-top: -1rem; margin-bottom: 1rem;"></div>
-          <div class="card">
-            <h4 class="card-header text-bg-primary">A hidden collapse controlled by a select input</h4>
-            <div class="card-body">
-              <div class="row g-2">
-                <div class="col-6 py-3">
-                  <select id="selectCollapse1Trigger1" class="form-select" data-isp-toggle="select-collapse" data-target="#selectCollapse1">
-                    <option data-action="hide"></option>
-                    <option value="Show" data-action="show">Show</option>
-                  </select>
-                </div>
-                <div class="col-6">
-                  <div id="selectCollapse1" class="collapse">
-                    <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
-                  </div>
-                </div>
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Select HTML</span>
+          <a href="#" data-clipboard="#selectTemplate1" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#selectTemplate1"></code></pre>
+          <template id="selectTemplate1">
+            <select class="form-select" data-isp-toggle="select-collapse" data-target="#hiddenCollapseId">
+              <option data-action="hide"></option>
+              <option value="Show" data-action="show">Show</option>
+            </select>
+          </template>
+        </div>
+
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Collapse HTML</span>
+          <a href="#" data-clipboard="#hiddenCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#hiddenCollapseTemplate"></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div id="card-8" class="anchor-offset"></div>
+      <div class="card">
+        <h4 class="card-header text-bg-primary">A shown collapse controlled by select input</h4>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-6 py-3">
+              <select id="selectCollapse2Trigger1" class="form-select" data-isp-toggle="select-collapse" data-target="#selectCollapse2">
+                <option data-action="show"></option>
+                <option value="Hide" data-action="hide">Hide</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <div id="selectCollapse2" class="collapse show">
+                <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
               </div>
-            </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Select HTML</span>
-              <a href="#" data-clipboard="#selectTemplate1" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#selectTemplate1"></code></pre>
-              <template id="selectTemplate1">
-                <select class="form-select" data-isp-toggle="select-collapse" data-target="#hiddenCollapseId">
-                  <option data-action="hide"></option>
-                  <option value="Show" data-action="show">Show</option>
-                </select>
-              </template>
-            </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Collapse HTML</span>
-              <a href="#" data-clipboard="#hiddenCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#hiddenCollapseTemplate"></code></pre>
             </div>
           </div>
         </div>
 
-        <div class="col-12">
-          <div id="card-8" style="margin-top: -1rem; margin-bottom: 1rem;"></div>
-          <div class="card">
-            <h4 class="card-header text-bg-primary">A shown collapse controlled by select input</h4>
-            <div class="card-body">
-              <div class="row g-2">
-                <div class="col-6 py-3">
-                  <select id="selectCollapse2Trigger1" class="form-select" data-isp-toggle="select-collapse" data-target="#selectCollapse2">
-                    <option data-action="show"></option>
-                    <option value="Hide" data-action="hide">Hide</option>
-                  </select>
-                </div>
-                <div class="col-6">
-                  <div id="selectCollapse2" class="collapse show">
-                    <div class="p-1 text-center fs-1 border rounded">Open!!!</div>
-                  </div>
-                </div>
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Select HTML</span>
+          <a href="#" data-clipboard="#selectTemplate2" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#selectTemplate2"></code></pre>
+          <template id="selectTemplate2">
+            <select class="form-select" data-isp-toggle="select-collapse" data-target="#shownCollapseId">
+              <option data-action="show"></option>
+              <option value="Hide" data-action="hide">Hide</option>
+            </select>
+          </template>
+        </div>
+
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Collapse HTML</span>
+          <a href="#" data-clipboard="#shownCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#shownCollapseTemplate"></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div id="card-9" class="anchor-offset"></div>
+      <div class="card">
+        <h4 class="card-header text-bg-primary">Multiple hidden collapses controlled by a select input</h4>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-4 py-3">
+              <select id="selectCollapse34Trigger1" class="form-select" data-isp-toggle="select-collapse" data-action="show">
+                <option></option>
+                <option value="1st" data-target="#selectCollapse3">Show 1st</option>
+                <option value="2nd" data-target="#selectCollapse4">Show 2nd</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <div id="selectCollapse3" class="collapse">
+                <div class="p-1 text-center fs-1 border rounded">1<sup>st</sup>!!!</div>
               </div>
             </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Select HTML</span>
-              <a href="#" data-clipboard="#selectTemplate2" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#selectTemplate2"></code></pre>
-              <template id="selectTemplate2">
-                <select class="form-select" data-isp-toggle="select-collapse" data-target="#shownCollapseId">
-                  <option data-action="show"></option>
-                  <option value="Hide" data-action="hide">Hide</option>
-                </select>
-              </template>
-            </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Collapse HTML</span>
-              <a href="#" data-clipboard="#shownCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#shownCollapseTemplate"></code></pre>
+            <div class="col-4">
+              <div id="selectCollapse4" class="collapse">
+                <div class="p-1 text-center fs-1 border rounded">2<sup>nd</sup>!!!</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="col-12">
-          <div id="card-9" style="margin-top: -1rem; margin-bottom: 1rem;"></div>
-          <div class="card">
-            <h4 class="card-header text-bg-primary">Multiple hidden collapses controlled by a select input</h4>
-            <div class="card-body">
-              <div class="row g-2">
-                <div class="col-4 py-3">
-                  <select id="selectCollapse34Trigger1" class="form-select" data-isp-toggle="select-collapse" data-action="show">
-                    <option></option>
-                    <option value="1st" data-target="#selectCollapse3">Show 1st</option>
-                    <option value="2nd" data-target="#selectCollapse4">Show 2nd</option>
-                  </select>
-                </div>
-                <div class="col-4">
-                  <div id="selectCollapse3" class="collapse">
-                    <div class="p-1 text-center fs-1 border rounded">1<sup>st</sup>!!!</div>
-                  </div>
-                </div>
-                <div class="col-4">
-                  <div id="selectCollapse4" class="collapse">
-                    <div class="p-1 text-center fs-1 border rounded">2<sup>nd</sup>!!!</div>
-                  </div>
-                </div>
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Select HTML</span>
+          <a href="#" data-clipboard="#selectTemplate3" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#selectTemplate3"></code></pre>
+          <template id="selectTemplate3">
+            <select class="form-select" data-isp-toggle="select-collapse" data-action="show">
+              <option></option>
+              <option value="1st" data-target="#hiddenCollapseId1">Show 1st</option>
+              <option value="2nd" data-target="#hiddenCollapseId2">Show 2nd</option>
+            </select>
+          </template>
+        </div>
+
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Collapse HTML</span>
+          <a href="#" data-clipboard="#multiHiddenCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#multiHiddenCollapseTemplate"></code></pre>
+          <template id="multiHiddenCollapseTemplate">
+            <div id="hiddenCollapseId1" class="collapse">
+              <!-- add your stuff here -->
+            </div>
+            <div id="hiddenCollapseId2" class="collapse">
+              <!-- add your stuff here -->
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div id="card-10" class="anchor-offset"></div>
+      <div class="card">
+        <h4 class="card-header text-bg-primary">Multiple shown collapses controlled by a select input</h4>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-4 py-3">
+              <select id="selectCollapse56Trigger1" class="form-select" data-isp-toggle="select-collapse" data-action="hide">
+                <option></option>
+                <option value="1st" data-target="#selectCollapse5">Show 1st</option>
+                <option value="2nd" data-target="#selectCollapse6">Show 2nd</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <div id="selectCollapse5" class="collapse show">
+                <div class="p-1 text-center fs-1 border rounded">1<sup>st</sup>!!!</div>
               </div>
             </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Select HTML</span>
-              <a href="#" data-clipboard="#selectTemplate3" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#selectTemplate3"></code></pre>
-              <template id="selectTemplate3">
-                <select class="form-select" data-isp-toggle="select-collapse" data-action="show">
-                  <option></option>
-                  <option value="1st" data-target="#hiddenCollapseId1">Show 1st</option>
-                  <option value="2nd" data-target="#hiddenCollapseId2">Show 2nd</option>
-                </select>
-              </template>
-            </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Collapse HTML</span>
-              <a href="#" data-clipboard="#multiHiddenCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#multiHiddenCollapseTemplate"></code></pre>
-              <template id="multiHiddenCollapseTemplate">
-                <div id="hiddenCollapseId1" class="collapse">
-                  <!-- add your stuff here -->
-                </div>
-                <div id="hiddenCollapseId2" class="collapse">
-                  <!-- add your stuff here -->
-                </div>
-              </template>
+            <div class="col-4">
+              <div id="selectCollapse6" class="collapse show">
+                <div class="p-1 text-center fs-1 border rounded">2<sup>nd</sup>!!!</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="col-12">
-          <div id="card-10" style="margin-top: -1rem; margin-bottom: 1rem;"></div>
-          <div class="card">
-            <h4 class="card-header text-bg-primary">Multiple shown collapses controlled by a select input</h4>
-            <div class="card-body">
-              <div class="row g-2">
-                <div class="col-4 py-3">
-                  <select id="selectCollapse56Trigger1" class="form-select" data-isp-toggle="select-collapse" data-action="hide">
-                    <option></option>
-                    <option value="1st" data-target="#selectCollapse5">Show 1st</option>
-                    <option value="2nd" data-target="#selectCollapse6">Show 2nd</option>
-                  </select>
-                </div>
-                <div class="col-4">
-                  <div id="selectCollapse5" class="collapse show">
-                    <div class="p-1 text-center fs-1 border rounded">1<sup>st</sup>!!!</div>
-                  </div>
-                </div>
-                <div class="col-4">
-                  <div id="selectCollapse6" class="collapse show">
-                    <div class="p-1 text-center fs-1 border rounded">2<sup>nd</sup>!!!</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Select HTML</span>
+          <a href="#" data-clipboard="#selectTemplate4" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#selectTemplate4"></code></pre>
+          <template id="selectTemplate4">
+            <select class="form-select" data-isp-toggle="select-collapse" data-action="hide">
+              <option></option>
+              <option value="1st" data-target="#shownCollapseId1">Show 1st</option>
+              <option value="2nd" data-target="#shownCollapseId2">Show 2nd</option>
+            </select>
+          </template>
+        </div>
 
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Select HTML</span>
-              <a href="#" data-clipboard="#selectTemplate4" title="copy"><i class="fa-solid fa-copy"></i></a>
+        <div class="card-header border-top d-flex">
+          <span class="flex-fill">Collapse HTML</span>
+          <a href="#" data-clipboard="#multiShownCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
+        </div>
+        <div class="card-body">
+          <pre><code data-code-target="#multiShownCollapseTemplate"></code></pre>
+          <template id="multiShownCollapseTemplate">
+            <div id="shownCollapseId1" class="collapse show">
+              <!-- add your stuff here -->
             </div>
-            <div class="card-body">
-              <pre><code data-code-target="#selectTemplate4"></code></pre>
-              <template id="selectTemplate4">
-                <select class="form-select" data-isp-toggle="select-collapse" data-action="hide">
-                  <option></option>
-                  <option value="1st" data-target="#shownCollapseId1">Show 1st</option>
-                  <option value="2nd" data-target="#shownCollapseId2">Show 2nd</option>
-                </select>
-              </template>
+            <div id="shownCollapseId2" class="collapse show">
+              <!-- add your stuff here -->
             </div>
-
-            <div class="card-header border-top d-flex">
-              <span class="flex-fill">Collapse HTML</span>
-              <a href="#" data-clipboard="#multiShownCollapseTemplate" title="copy"><i class="fa-solid fa-copy"></i></a>
-            </div>
-            <div class="card-body">
-              <pre><code data-code-target="#multiShownCollapseTemplate"></code></pre>
-              <template id="multiShownCollapseTemplate">
-                <div id="shownCollapseId1" class="collapse show">
-                  <!-- add your stuff here -->
-                </div>
-                <div id="shownCollapseId2" class="collapse show">
-                  <!-- add your stuff here -->
-                </div>
-              </template>
-            </div>
-          </div>
+          </template>
         </div>
       </div>
     </div>
@@ -626,20 +648,4 @@
 </template>
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3/+esm"></script>
-<script type="module">
-  import { initRadioCollapse, initCheckboxCollapse, initSelectCollapse } from "/toolbox/js/CollapseUtils.js";
-  import { initExamples } from "/toolbox/assets/TestUtils.js";
-
-  (async function main() {
-    initRadioCollapse();
-    initCheckboxCollapse();
-    initSelectCollapse();
-
-    initExamples();
-
-    const urlParams = new URLSearchParams(location.search);
-    if (urlParams.get('_ijt')) {
-      (await import("/toolbox/test/CollapseUtilsTests.js")).initTests('#tests');
-    }
-  })();
-</script>
+<script type="module" src="/toolbox/test/CollapseUtilsTests.js"></script>

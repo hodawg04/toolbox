@@ -1,9 +1,14 @@
-// noinspection DuplicatedCode
-
 import { initCheckboxCollapse, initRadioCollapse, initSelectCollapse } from "../js/CollapseUtils.js";
-import { runTests, simulateInput } from "./assets/TestUtils.js";
+import { initExamples, runTests, simulateInputEvent } from "../assets/TestUtils.js";
 
-function initTests(selector) {
+initRadioCollapse();
+initCheckboxCollapse();
+initSelectCollapse();
+
+initExamples();
+
+const execTestBtn = document.querySelector('#execTests');
+execTestBtn.addEventListener('click', function() {
   initRadioCollapse();
   initCheckboxCollapse();
   initSelectCollapse();
@@ -52,8 +57,8 @@ function initTests(selector) {
     testSelectCollapse5Hides,
     testSelectCollapse6Hides,
     testSelectCollapse56Shows
-  ], selector);
-}
+  ], execTestBtn.dataset.target);
+});
 
 function testRadioCollapse1Shows(resolve, reject) {
   const collapseEl = document.querySelector('#radioCollapse1');
@@ -62,7 +67,7 @@ function testRadioCollapse1Shows(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('shown.bs.collapse', () => success = true);
-  simulateInput(triggerEl, true);
+  simulateInputEvent(triggerEl, true);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -73,7 +78,7 @@ function testRadioCollapse1Hides(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
-  simulateInput(triggerEl, true);
+  simulateInputEvent(triggerEl, true);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -84,7 +89,7 @@ function testRadioCollapse2Shows(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
-  simulateInput(triggerEl, true);
+  simulateInputEvent(triggerEl, true);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -95,7 +100,7 @@ function testRadioCollapse2Hides(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('shown.bs.collapse', () => success = true);
-  simulateInput(triggerEl, true);
+  simulateInputEvent(triggerEl, true);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -106,7 +111,7 @@ function testCheckboxCollapse1CheckedShows(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('shown.bs.collapse', () => success = true);
-  simulateInput(triggerEl, true);
+  simulateInputEvent(triggerEl, true);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -117,7 +122,7 @@ function testCheckboxCollapse1UnCheckedHides(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
-  simulateInput(triggerEl, false);
+  simulateInputEvent(triggerEl, false);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -128,7 +133,7 @@ function testCheckboxCollapse2CheckedHides(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
-  simulateInput(triggerEl, true);
+  simulateInputEvent(triggerEl, true);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -139,7 +144,7 @@ function testCheckboxCollapse2UnCheckedShows(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('shown.bs.collapse', () => success = true);
-  simulateInput(triggerEl, false);
+  simulateInputEvent(triggerEl, false);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -150,7 +155,7 @@ function testCheckboxCollapse3Checkbox1CheckedShows(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('shown.bs.collapse', () => success = true);
-  simulateInput(triggerEl, true);
+  simulateInputEvent(triggerEl, true);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -162,7 +167,7 @@ function testCheckboxCollapse3Checkbox2CheckedNothing(resolve, reject) {
   let success = true;
   collapseEl.addEventListener('shown.bs.collapse', () => success = false);
   collapseEl.addEventListener('hidden.bs.collapse', () => success = false);
-  simulateInput(triggerEl, true);
+  simulateInputEvent(triggerEl, true);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -174,7 +179,7 @@ function testCheckboxCollapse3Checkbox2UnCheckedNothing(resolve, reject) {
   let success = true;
   collapseEl.addEventListener('shown.bs.collapse', () => success = false);
   collapseEl.addEventListener('hidden.bs.collapse', () => success = false);
-  simulateInput(triggerEl, false);
+  simulateInputEvent(triggerEl, false);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -185,7 +190,7 @@ function testCheckboxCollapse3Checkbox1UnCheckedHides(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
-  simulateInput(triggerEl, false);
+  simulateInputEvent(triggerEl, false);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -196,7 +201,7 @@ function testCheckboxCollapse3Checkbox2CheckedShows(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('shown.bs.collapse', () => success = true);
-  simulateInput(triggerEl, true);
+  simulateInputEvent(triggerEl, true);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -208,7 +213,7 @@ function testCheckboxCollapse3Checkbox1CheckedNothing(resolve, reject) {
   let success = true;
   collapseEl.addEventListener('shown.bs.collapse', () => success = false);
   collapseEl.addEventListener('hidden.bs.collapse', () => success = false);
-  simulateInput(triggerEl, true);
+  simulateInputEvent(triggerEl, true);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -220,7 +225,7 @@ function testCheckboxCollapse3Checkbox1UnCheckedNothing(resolve, reject) {
   let success = true;
   collapseEl.addEventListener('shown.bs.collapse', () => success = false);
   collapseEl.addEventListener('hidden.bs.collapse', () => success = false);
-  simulateInput(triggerEl, false);
+  simulateInputEvent(triggerEl, false);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -231,7 +236,7 @@ function testCheckboxCollapse3Checkbox2UnCheckedHides(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
-  simulateInput(triggerEl, false);
+  simulateInputEvent(triggerEl, false);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -242,7 +247,7 @@ function testCheckboxCollapse4Checkbox1CheckedHides(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
-  simulateInput(triggerEl, true);
+  simulateInputEvent(triggerEl, true);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -254,7 +259,7 @@ function testCheckboxCollapse4Checkbox2CheckedNothing(resolve, reject) {
   let success = true;
   collapseEl.addEventListener('shown.bs.collapse', () => success = false);
   collapseEl.addEventListener('hidden.bs.collapse', () => success = false);
-  simulateInput(triggerEl, true);
+  simulateInputEvent(triggerEl, true);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -266,7 +271,7 @@ function testCheckboxCollapse4Checkbox2UnCheckedNothing(resolve, reject) {
   let success = true;
   collapseEl.addEventListener('shown.bs.collapse', () => success = false);
   collapseEl.addEventListener('hidden.bs.collapse', () => success = false);
-  simulateInput(triggerEl, false);
+  simulateInputEvent(triggerEl, false);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -277,7 +282,7 @@ function testCheckboxCollapse4Checkbox1UnCheckedShows(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('shown.bs.collapse', () => success = true);
-  simulateInput(triggerEl, false);
+  simulateInputEvent(triggerEl, false);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -288,7 +293,7 @@ function testCheckboxCollapse4Checkbox2CheckedHides(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
-  simulateInput(triggerEl, true);
+  simulateInputEvent(triggerEl, true);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -300,7 +305,7 @@ function testCheckboxCollapse4Checkbox1CheckedNothing(resolve, reject) {
   let success = true;
   collapseEl.addEventListener('shown.bs.collapse', () => success = false);
   collapseEl.addEventListener('hidden.bs.collapse', () => success = false);
-  simulateInput(triggerEl, true);
+  simulateInputEvent(triggerEl, true);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -312,7 +317,7 @@ function testCheckboxCollapse4Checkbox1UnCheckedNothing(resolve, reject) {
   let success = true;
   collapseEl.addEventListener('shown.bs.collapse', () => success = false);
   collapseEl.addEventListener('hidden.bs.collapse', () => success = false);
-  simulateInput(triggerEl, false);
+  simulateInputEvent(triggerEl, false);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -323,7 +328,7 @@ function testCheckboxCollapse4Checkbox2UnCheckedShows(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('shown.bs.collapse', () => success = true);
-  simulateInput(triggerEl, false);
+  simulateInputEvent(triggerEl, false);
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -334,7 +339,7 @@ function testSelectCollapse1Shows(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('shown.bs.collapse', () => success = true);
-  simulateInput(triggerEl, 'Show');
+  simulateInputEvent(triggerEl, 'Show');
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -345,7 +350,7 @@ function testSelectCollapse1Hides(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
-  simulateInput(triggerEl, '');
+  simulateInputEvent(triggerEl, '');
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -356,7 +361,7 @@ function testSelectCollapse2Shows(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('hidden.bs.collapse', () => success = true);
-  simulateInput(triggerEl, 'Hide');
+  simulateInputEvent(triggerEl, 'Hide');
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -367,7 +372,7 @@ function testSelectCollapse2Hides(resolve, reject) {
 
   let success = false;
   collapseEl.addEventListener('shown.bs.collapse', () => success = true);
-  simulateInput(triggerEl, '');
+  simulateInputEvent(triggerEl, '');
   setTimeout(() => success ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -381,7 +386,7 @@ function testSelectCollapse3Shows(resolve, reject) {
   let success2 = true;
   collapse3El.addEventListener('shown.bs.collapse', () => success1 = true);
   collapse4El.addEventListener('shown.bs.collapse', () => success2 = false);
-  simulateInput(triggerEl, '1st');
+  simulateInputEvent(triggerEl, '1st');
   setTimeout(() => success1 && success2 ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -395,7 +400,7 @@ function testSelectCollapse4Shows(resolve, reject) {
   let success2 = false;
   collapse3El.addEventListener('hidden.bs.collapse', () => success1 = true);
   collapse4El.addEventListener('shown.bs.collapse', () => success2 = true);
-  simulateInput(triggerEl, '2nd');
+  simulateInputEvent(triggerEl, '2nd');
   setTimeout(() => success1 && success2 ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -410,7 +415,7 @@ function testSelectCollapse34Hides(resolve, reject) {
   collapse3El.addEventListener('shown.bs.collapse', () => success1 = false);
   collapse3El.addEventListener('hidden.bs.collapse', () => success1 = false);
   collapse4El.addEventListener('hidden.bs.collapse', () => success2 = true);
-  simulateInput(triggerEl, '');
+  simulateInputEvent(triggerEl, '');
   setTimeout(() => success1 && success2 ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -424,7 +429,7 @@ function testSelectCollapse5Hides(resolve, reject) {
   let success2 = true;
   collapse5El.addEventListener('hidden.bs.collapse', () => success1 = true);
   collapse6El.addEventListener('hidden.bs.collapse', () => success2 = false);
-  simulateInput(triggerEl, '1st');
+  simulateInputEvent(triggerEl, '1st');
   setTimeout(() => success1 && success2 ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -438,7 +443,7 @@ function testSelectCollapse6Hides(resolve, reject) {
   let success2 = false;
   collapse5El.addEventListener('shown.bs.collapse', () => success1 = true);
   collapse6El.addEventListener('hidden.bs.collapse', () => success2 = true);
-  simulateInput(triggerEl, '2nd');
+  simulateInputEvent(triggerEl, '2nd');
   setTimeout(() => success1 && success2 ? resolve(resultEl) : reject(resultEl), 400);
 }
 
@@ -453,8 +458,6 @@ function testSelectCollapse56Shows(resolve, reject) {
   collapse5El.addEventListener('hidden.bs.collapse', () => success1 = false);
   collapse5El.addEventListener('shown.bs.collapse', () => success1 = false);
   collapse6El.addEventListener('shown.bs.collapse', () => success2 = true);
-  simulateInput(triggerEl, '');
+  simulateInputEvent(triggerEl, '');
   setTimeout(() => success1 && success2 ? resolve(resultEl) : reject(resultEl), 400);
 }
-
-export { initTests }

@@ -26,7 +26,7 @@ function runTests(tests, selector) {
   }
 }
 
-function simulateInput(inputEl, value) {
+function simulateInputEvent(inputEl, value) {
   if (['radio', 'checkbox'].includes(inputEl.type)) {
     inputEl.checked = value;
   }
@@ -75,4 +75,4 @@ function initExamples() {
   }
 }
 
-export { runTests, simulateInput, initExamples }
+export { runTests, simulateInputEvent, initExamples }
