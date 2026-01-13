@@ -1,42 +1,3 @@
-import { Confirmation } from "/js/Confirmation.js";
-import { runTests } from "/test/assets/TestUtils.js";
-
-function initTests() {
-  Confirmation.initAll();
-
-  let alertText;
-  preventSubmit('BOOM!!! TEST FAILED!!! You should not have gotten here!!!');
-
-  runTests([
-    basicConfirmCancelTest,
-    basicConfirmTest,
-    btnNotInFormTest,
-    btnValueSubmittedTest,
-
-    customTitleTest,
-    customBodyTest,
-    customYesLabelTest,
-    customNoLabelTest,
-
-    linkConfirmationTest,
-    btnConfirmationTest,
-    formConfirmationTest
-  ], '#tests');
-
-  preventSubmit('Form Submitted');
-
-  function preventSubmit(text) {
-    if (!alertText) {
-      document.addEventListener('submit', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        alert(alertText);
-      });
-    }
-    alertText = text;
-  }
-}
-
 function basicConfirmCancelTest(resolve, reject) {
   const formEl = document.querySelector('#basicConfirmForm');
   const btnEl = document.querySelector('#basicConfirmBtn');
@@ -258,4 +219,18 @@ function onConfirmationSimulateYesClick(beforeClickFn) {
   }
 }
 
-export { initTests }
+export const tests = [
+  basicConfirmCancelTest,
+  basicConfirmTest,
+  btnNotInFormTest,
+  btnValueSubmittedTest,
+
+  customTitleTest,
+  customBodyTest,
+  customYesLabelTest,
+  customNoLabelTest,
+
+  linkConfirmationTest,
+  btnConfirmationTest,
+  formConfirmationTest
+];

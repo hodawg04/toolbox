@@ -1,16 +1,4 @@
-import { Countdown } from "/js/Countdown.js";
-import { runTests, simulateInput } from "/test/assets/TestUtils.js";
-
-function initTests(selector) {
-  Countdown.initAll();
-
-  runTests([
-    defaultInitTest,
-    maxlengthInitTest,
-    labelInitTest,
-    showAllInitTest
-  ], selector);
-}
+import { simulateInputEvent } from "./z-test-utils.js";
 
 function defaultInitTest(resolve, reject) {
   const textareaEl = document.querySelector('#countdown1');
@@ -22,10 +10,10 @@ function defaultInitTest(resolve, reject) {
   const success3 = formTextEl.innerText === 'Characters remaining: 255';
   const initSuccess = success1 && success2 && success3;
 
-  simulateInput(textareaEl, 'a');
+  simulateInputEvent(textareaEl, 'a');
   const success4 = formTextEl.innerText === 'Characters remaining: 254';
 
-  simulateInput(textareaEl, '');
+  simulateInputEvent(textareaEl, '');
   const success5 = formTextEl.innerText === 'Characters remaining: 255';
   const countSuccess = success4 && success5;
 
@@ -42,10 +30,10 @@ function maxlengthInitTest(resolve, reject) {
   const success3 = formTextEl.innerText === 'Characters remaining: 4000';
   const initSuccess = success1 && success2 && success3;
 
-  simulateInput(textareaEl, 'a');
+  simulateInputEvent(textareaEl, 'a');
   const success4 = formTextEl.innerText === 'Characters remaining: 3999';
 
-  simulateInput(textareaEl, '');
+  simulateInputEvent(textareaEl, '');
   const success5 = formTextEl.innerText === 'Characters remaining: 4000';
   const countSuccess = success4 && success5;
 
@@ -62,10 +50,10 @@ function labelInitTest(resolve, reject) {
   const success3 = formTextEl.innerText === 'Char Left: 4000';
   const initSuccess = success1 && success2 && success3;
 
-  simulateInput(textareaEl, 'a');
+  simulateInputEvent(textareaEl, 'a');
   const success4 = formTextEl.innerText === 'Char Left: 3999';
 
-  simulateInput(textareaEl, '');
+  simulateInputEvent(textareaEl, '');
   const success5 = formTextEl.innerText === 'Char Left: 4000';
   const countSuccess = success4 && success5;
 
@@ -83,11 +71,11 @@ function showAllInitTest(resolve, reject) {
   const success3 = formTextEl.innerText === 'Characters remaining: 4000';
   const initSuccess = success1 && success2 && success3;
 
-  simulateInput(textareaEl, 'bob\nbob\nbob');
+  simulateInputEvent(textareaEl, 'bob\nbob\nbob');
   const success4 = formTextEl.innerText === 'Characters remaining: 3989';
   const success5 = initialHeight < calcHeight();
 
-  simulateInput(textareaEl, '');
+  simulateInputEvent(textareaEl, '');
   const success6 = formTextEl.innerText === 'Characters remaining: 4000';
   const success7 = initialHeight === calcHeight();
   const countSuccess = success4 && success5 && success6 && success7;
@@ -100,4 +88,9 @@ function showAllInitTest(resolve, reject) {
   }
 }
 
-export { initTests }
+export const tests = [
+  defaultInitTest,
+  maxlengthInitTest,
+  labelInitTest,
+  showAllInitTest
+];

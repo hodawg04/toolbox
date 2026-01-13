@@ -1,64 +1,4 @@
-import { initCheckboxCollapse, initRadioCollapse, initSelectCollapse } from "../js/CollapseUtils.js";
-import { initExamples, runTests, simulateInputEvent } from "../assets/TestUtils.js";
-
-initRadioCollapse();
-initCheckboxCollapse();
-initSelectCollapse();
-
-initExamples();
-
-const execTestBtn = document.querySelector('#execTests');
-execTestBtn.addEventListener('click', function() {
-  initRadioCollapse();
-  initCheckboxCollapse();
-  initSelectCollapse();
-
-  runTests([
-    testRadioCollapse1Shows,
-    testRadioCollapse1Hides,
-
-    testRadioCollapse2Shows,
-    testRadioCollapse2Hides,
-
-    testCheckboxCollapse1CheckedShows,
-    testCheckboxCollapse1UnCheckedHides,
-
-    testCheckboxCollapse2CheckedHides,
-    testCheckboxCollapse2UnCheckedShows,
-
-    testCheckboxCollapse3Checkbox1CheckedShows,
-    testCheckboxCollapse3Checkbox2CheckedNothing,
-    testCheckboxCollapse3Checkbox2UnCheckedNothing,
-    testCheckboxCollapse3Checkbox1UnCheckedHides,
-    testCheckboxCollapse3Checkbox2CheckedShows,
-    testCheckboxCollapse3Checkbox1CheckedNothing,
-    testCheckboxCollapse3Checkbox1UnCheckedNothing,
-    testCheckboxCollapse3Checkbox2UnCheckedHides,
-
-    testCheckboxCollapse4Checkbox1CheckedHides,
-    testCheckboxCollapse4Checkbox2CheckedNothing,
-    testCheckboxCollapse4Checkbox2UnCheckedNothing,
-    testCheckboxCollapse4Checkbox1UnCheckedShows,
-    testCheckboxCollapse4Checkbox2CheckedHides,
-    testCheckboxCollapse4Checkbox1CheckedNothing,
-    testCheckboxCollapse4Checkbox1UnCheckedNothing,
-    testCheckboxCollapse4Checkbox2UnCheckedShows,
-
-    testSelectCollapse1Shows,
-    testSelectCollapse1Hides,
-
-    testSelectCollapse2Shows,
-    testSelectCollapse2Hides,
-
-    testSelectCollapse3Shows,
-    testSelectCollapse4Shows,
-    testSelectCollapse34Hides,
-
-    testSelectCollapse5Hides,
-    testSelectCollapse6Hides,
-    testSelectCollapse56Shows
-  ], execTestBtn.dataset.target);
-});
+import { simulateInputEvent } from "./z-test-utils.js";
 
 function testRadioCollapse1Shows(resolve, reject) {
   const collapseEl = document.querySelector('#radioCollapse1');
@@ -461,3 +401,49 @@ function testSelectCollapse56Shows(resolve, reject) {
   simulateInputEvent(triggerEl, '');
   setTimeout(() => success1 && success2 ? resolve(resultEl) : reject(resultEl), 400);
 }
+
+export const tests = [
+  testRadioCollapse1Shows,
+  testRadioCollapse1Hides,
+
+  testRadioCollapse2Shows,
+  testRadioCollapse2Hides,
+
+  testCheckboxCollapse1CheckedShows,
+  testCheckboxCollapse1UnCheckedHides,
+
+  testCheckboxCollapse2CheckedHides,
+  testCheckboxCollapse2UnCheckedShows,
+
+  testCheckboxCollapse3Checkbox1CheckedShows,
+  testCheckboxCollapse3Checkbox2CheckedNothing,
+  testCheckboxCollapse3Checkbox2UnCheckedNothing,
+  testCheckboxCollapse3Checkbox1UnCheckedHides,
+  testCheckboxCollapse3Checkbox2CheckedShows,
+  testCheckboxCollapse3Checkbox1CheckedNothing,
+  testCheckboxCollapse3Checkbox1UnCheckedNothing,
+  testCheckboxCollapse3Checkbox2UnCheckedHides,
+
+  testCheckboxCollapse4Checkbox1CheckedHides,
+  testCheckboxCollapse4Checkbox2CheckedNothing,
+  testCheckboxCollapse4Checkbox2UnCheckedNothing,
+  testCheckboxCollapse4Checkbox1UnCheckedShows,
+  testCheckboxCollapse4Checkbox2CheckedHides,
+  testCheckboxCollapse4Checkbox1CheckedNothing,
+  testCheckboxCollapse4Checkbox1UnCheckedNothing,
+  testCheckboxCollapse4Checkbox2UnCheckedShows,
+
+  testSelectCollapse1Shows,
+  testSelectCollapse1Hides,
+
+  testSelectCollapse2Shows,
+  testSelectCollapse2Hides,
+
+  testSelectCollapse3Shows,
+  testSelectCollapse4Shows,
+  testSelectCollapse34Hides,
+
+  testSelectCollapse5Hides,
+  testSelectCollapse6Hides,
+  testSelectCollapse56Shows
+];

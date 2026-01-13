@@ -1,5 +1,3 @@
-// noinspection JSUnusedGlobalSymbols
-
 //https://robinherbots.github.io/Inputmask/
 import Inputmask from 'https://cdn.jsdelivr.net/npm/inputmask@5.0.9/+esm';
 

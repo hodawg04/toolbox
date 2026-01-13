@@ -6,59 +6,51 @@
   <title>CollapseUtils.js</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1/css/all.css" rel="stylesheet"/>
-  <link href="/toolbox/assets/style.css" rel="stylesheet"/>
+  <link href="assets/style.css" rel="stylesheet"/>
 </head>
-
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary position-sticky top-0 z-1">
+<nav class="navbar navbar-expand bg-body-tertiary position-sticky top-0 z-1">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/toolbox">ISP Toolbox</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div id="navContent" class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto d-lg-none">
-        <li class="nav-item"><h6 class="mb-1">Modules</h6></li>
-        <li class="nav-item"><a href="/toolbox/CollapseUtils.html" class="nav-link">CollapseUtils.js</a></li>
-        <li class="nav-item"><a href="/toolbox/Confirmation.html" class="nav-link">Confirmation.js</a></li>
-        <li class="nav-item"><a href="/toolbox/CopyText.html" class="nav-link">CopyText.js</a></li>
-        <li class="nav-item"><a href="/toolbox/Countdown.html" class="nav-link">Countdown.js</a></li>
-      </ul>
-      <ul class="navbar-nav ms-auto d-none d-lg-flex">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Modules</a>
-          <div class="dropdown-menu dropdown-menu-end">
-            <a href="/toolbox/CollapseUtils.html" class="dropdown-item">CollapseUtils.js</a>
-            <a href="/toolbox/Confirmation.html" class="dropdown-item">Confirmation.js</a>
-            <a href="/toolbox/CopyText.html" class="dropdown-item">CopyText.js</a>
-            <a href="/toolbox/Countdown.html" class="dropdown-item">Countdown.js</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contents</a>
-          <div class="dropdown-menu dropdown-menu-end">
-            <a href="#card-1" class="dropdown-item">1. Hidden collapse controlled by multiple radio inputs</a>
-            <a href="#card-2" class="dropdown-item">2. Shown collapse controlled by multiple radio inputs</a>
-            <a href="#card-3" class="dropdown-item">3. Hidden collapse controlled by a checkbox input</a>
-            <a href="#card-4" class="dropdown-item">4. Shown collapse controlled by a checkbox input</a>
-            <a href="#card-5" class="dropdown-item">5. Hidden collapse controlled by multiple checkbox inputs</a>
-            <a href="#card-6" class="dropdown-item">6. Shown collapse controlled by multiple checkbox inputs</a>
-            <a href="#card-7" class="dropdown-item">7. A hidden collapse controlled by a select input</a>
-            <a href="#card-8" class="dropdown-item">8. A shown collapse controlled by select input</a>
-            <a href="#card-9" class="dropdown-item">9. Multiple hidden collapses controlled by a select input</a>
-            <a href="#card-10" class="dropdown-item">10. Multiple shown collapses controlled by a select input</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <button id="execTests" type="button" class="nav-link" data-target="#tests">Run Tests</button>
-        </li>
-      </ul>
-    </div>
+    <a class="navbar-brand" href="/toolbox/">ISP CDN</a>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Module Docs</a>
+        <div class="dropdown-menu dropdown-menu-end">
+          <a href="collapse-utils.html" class="dropdown-item">CollapseUtils.js</a>
+          <a href="confirmation.html" class="dropdown-item">Confirmation.js</a>
+          <a href="copy-text.html" class="dropdown-item">CopyText.js</a>
+          <a href="countdown.html" class="dropdown-item">Countdown.js</a>
+          <a href="mask.html" class="dropdown-item">Mask.js</a>
+          <a href="radio-button.html" class="dropdown-item">RadioButton.js</a>
+          <a href="row-click.html" class="dropdown-item">RowClick.js</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contents</a>
+        <div class="dropdown-menu dropdown-menu-end">
+          <a href="#card-1" class="dropdown-item">Hidden collapse controlled by multiple radio inputs</a>
+          <a href="#card-2" class="dropdown-item">Shown collapse controlled by multiple radio inputs</a>
+          <a href="#card-3" class="dropdown-item">Hidden collapse controlled by a checkbox input</a>
+          <a href="#card-4" class="dropdown-item">Shown collapse controlled by a checkbox input</a>
+          <a href="#card-5" class="dropdown-item">Hidden collapse controlled by multiple checkbox inputs</a>
+          <a href="#card-6" class="dropdown-item">Shown collapse controlled by multiple checkbox inputs</a>
+          <a href="#card-7" class="dropdown-item">A hidden collapse controlled by a select input</a>
+          <a href="#card-8" class="dropdown-item">A shown collapse controlled by select input</a>
+          <a href="#card-9" class="dropdown-item">Multiple hidden collapses controlled by a select input</a>
+          <a href="#card-10" class="dropdown-item">Multiple shown collapses controlled by a select input</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="nav-link" data-bs-toggle="collapse" data-bs-target="#tests">Toggle Tests</button>
+      </li>
+    </ul>
   </div>
 </nav>
 
-<div class="container-fluid p-3">
-  <div id="tests" class="collapse">
+<div class="container p-3">
+  <h1>CollapseUtils.js</h1>
+
+  <div id="tests" class="collapse" data-toggle="tests">
     <div class="card mb-3">
       <h6 class="card-header">Test Results</h6>
       <div class="card-body">
@@ -648,4 +640,26 @@
 </template>
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3/+esm"></script>
-<script type="module" src="/toolbox/test/CollapseUtilsTests.js"></script>
+<script type="module">
+  import { initCheckboxCollapse, initRadioCollapse, initSelectCollapse } from "../js/CollapseUtils.js";
+  import { initExamples, initTestRunner } from "./assets/modules.js";
+  import { tests } from "../tests/collapse-utils-tests.js";
+
+  (function main() {
+    doubleInit();
+    initExamples();
+    initTestRunner(tests);
+  })();
+
+  function doubleInit() {
+    initRadioCollapse();
+    initCheckboxCollapse();
+    initSelectCollapse();
+
+    initRadioCollapse();
+    initCheckboxCollapse();
+    initSelectCollapse();
+  }
+</script>
+</body>
+</html>

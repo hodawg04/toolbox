@@ -1,13 +1,3 @@
-import { runTests } from "/test/assets/TestUtils.js";
-
-function initTests(selector) {
-  // import then init lib here
-
-  runTests([
-    test
-  ], selector);
-}
-
 function test(resolve, reject) {
   const resultEl = document.querySelector('#exampleResult');
   let success;
@@ -16,4 +6,6 @@ function test(resolve, reject) {
   success ? resolve(resultEl) : reject(resultEl);
 }
 
-export { initTests }
+export const tests = [
+  test
+];
